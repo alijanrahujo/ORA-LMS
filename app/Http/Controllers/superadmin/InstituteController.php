@@ -64,7 +64,7 @@ class InstituteController extends Controller
         $institute->logo = $logo;
         $institute->save();
 
-        return redirect('institute')->with('success','Institute Successfully Registered');
+        return redirect('superadmin/institute')->with('success','Institute Successfully Registered');
     }
 
     /**
