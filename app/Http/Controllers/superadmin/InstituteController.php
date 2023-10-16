@@ -64,7 +64,7 @@ class InstituteController extends Controller
         $institute->logo = $logo;
         $institute->save();
 
-        return redirect('institute')->with('success','Institute Successfully Registered');
+        return redirect('superadmin/institute')->with('success','Institute Successfully Registered');
     }
 
     /**
@@ -94,7 +94,7 @@ class InstituteController extends Controller
         $user->email = $request->email;
         $user->password = $request->has('password') ? Hash::make($request->password) : $user->password;
         $user->update();
-        return redirect('institute')->with('success','Institute Successfully Updated');
+        return redirect('superadmin/institute')->with('success','Institute Successfully Updated');
     }
 
     /**
@@ -105,6 +105,6 @@ class InstituteController extends Controller
         $institute = Institute::find($id);
         $institute->user->delete();
         $institute->delete();
-        return redirect('institute')->with('success','Institute Successfully Deleted');
+        return redirect('superadmin/institute')->with('success','Institute Successfully Deleted');
     }
 }
