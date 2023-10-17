@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Institute;
 
-use App\Models\FeeType;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class FeeTypeController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class FeeTypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FeeType $feeType)
+    public function show(Student $student)
     {
         //
     }
@@ -42,7 +43,7 @@ class FeeTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FeeType $feeType)
+    public function edit(Student $student)
     {
         //
     }
@@ -50,7 +51,7 @@ class FeeTypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FeeType $feeType)
+    public function update(Request $request, Student $student)
     {
         //
     }
@@ -58,7 +59,7 @@ class FeeTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FeeType $feeType)
+    public function destroy(Student $student)
     {
         //
     }

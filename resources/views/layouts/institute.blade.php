@@ -169,15 +169,12 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
 
-                            <a class="dropdown-item notify-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                                <i class="fe-log-out"></i>
-                                {{ __('Logout') }}
-                            </a>
-                        </form>
+                        <a class="dropdown-item notify-item" href="{{ route('institute.logout') }}">
+                            <i class="fe-log-out"></i>
+                            {{ __('Logout') }}
+                        </a>
+
 
                     </div>
                 </li>
@@ -187,7 +184,7 @@
             <div class="logo-box">
                 <a href="{{Route('home')}}" class="logo text-center">
                     <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="100">
+                        <img src="{{asset('assets/images/logo-light.png')}}" alt="" width="100%">
                         <!-- <span class="logo-lg-text-light">UBold</span> -->
                     </span>
                     <span class="logo-sm">
@@ -235,12 +232,18 @@
                     <ul class="metismenu" id="side-menu">
 
                         <li>
-                            <a href="{{route('dashboard')}}">
+                            <a href="{{route('superadmin.dashboard')}}">
                                 <i class="fe-airplay"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li>
+                            <a href="{{route('institute.student.index')}}">
+                                <i class="fe-airplay"></i>
+                                <span>Student</span>
+                            </a>
+                        </li>
+                        <!-- <li>
                             <a href="javascript: void(0);">
                                 <i class="fe-sidebar"></i>
                                 <span>Users Management</span>
@@ -251,7 +254,7 @@
                                 <li><a href="{{Route('institute.roles.index')}}">Roles</a></li>
                                 <li><a href="{{Route('institute.permissions.index')}}">Permissions</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
 
                 </div>

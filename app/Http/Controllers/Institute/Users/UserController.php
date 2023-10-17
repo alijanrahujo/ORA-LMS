@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Superadmin\Users;
+namespace App\Http\Controllers\Institute\Users;
 
 use App\Models\User;
 use Illuminate\Support\Arr;

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Institute;
 
-use App\Models\Guardian;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class GuardianController extends Controller
+class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class GuardianController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Guardian $guardian)
+    public function show(Invoice $invoice)
     {
         //
     }
@@ -42,7 +43,7 @@ class GuardianController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Guardian $guardian)
+    public function edit(Invoice $invoice)
     {
         //
     }
@@ -50,7 +51,7 @@ class GuardianController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Guardian $guardian)
+    public function update(Request $request, Invoice $invoice)
     {
         //
     }
@@ -58,7 +59,7 @@ class GuardianController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Guardian $guardian)
+    public function destroy(Invoice $invoice)
     {
         //
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\superadmin;
+namespace App\Http\Controllers\Superadmin;
 
 use App\Models\User;
 use App\Models\Institute;
@@ -72,7 +72,7 @@ class InstituteController extends Controller
      */
     public function show(Institute $institute)
     {
-        
+
     }
 
     /**

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Institute;
 
-use App\Models\Teacher;
+use App\Models\Guardian;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class TeacherController extends Controller
+class GuardianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Teacher $teacher)
+    public function show(Guardian $guardian)
     {
         //
     }
@@ -42,7 +43,7 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Teacher $teacher)
+    public function edit(Guardian $guardian)
     {
         //
     }
@@ -50,7 +51,7 @@ class TeacherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request, Guardian $guardian)
     {
         //
     }
@@ -58,7 +59,7 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Teacher $teacher)
+    public function destroy(Guardian $guardian)
     {
         //
     }

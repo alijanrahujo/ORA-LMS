@@ -169,15 +169,12 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
 
-                            <a class="dropdown-item notify-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                                <i class="fe-log-out"></i>
-                                {{ __('Logout') }}
-                            </a>
-                        </form>
+                        <a class="dropdown-item notify-item" href="{{ route('superadmin.logout') }}">
+                            <i class="fe-log-out"></i>
+                            {{ __('Logout') }}
+                        </a>
+
 
                     </div>
                 </li>
@@ -235,7 +232,7 @@
                     <ul class="metismenu" id="side-menu">
 
                         <li>
-                            <a href="{{route('dashboard')}}">
+                            <a href="{{route('superadmin.dashboard')}}">
                                 <i class="fe-airplay"></i>
                                 <span>Dashboard</span>
                             </a>

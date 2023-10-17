@@ -29,11 +29,11 @@ class UserPermissionSeeder extends Seeder
             'teacher-edit',
             'teacher-delete',
 
-            
+
          ];
-      
+
          foreach ($permissions as $permission) {
-              Permission::create(['name' => $permission]);
+              Permission::create(['name' => $permission,'guard_name'=>'superadmin']);
          }
     }
 }

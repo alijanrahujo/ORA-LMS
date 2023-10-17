@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Superadmin\Users;
+namespace App\Http\Controllers\Institute\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
