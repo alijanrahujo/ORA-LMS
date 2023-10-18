@@ -46,15 +46,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Gender<span class="text-danger">*</span></label>
-                                    <div class="form-check col-md-6">
-                                        <input type="radio" id="male" name="gender" class="form-check-input" value="male" required>
-                                        <label for="male" class="form-check-label">Male</label>
-                                    </div>
-                                    <div class="form-check col-md-6">
-                                        <input type="radio" id="female" name="gender" class="form-check-input" value="female" required>
-                                        <label for="female" class="form-check-label">Female</label>
-                                    </div>
+                                    <label>Guardian Name<span class="text-danger">*</span></label>
+                                    {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div> 
                             <div class="col-md-6">
