@@ -243,6 +243,12 @@
                                 <span>Student</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{route('institute.guardian.index')}}">
+                                <i class="fe-airplay"></i>
+                                <span>Guardian</span>
+                            </a>
+                        </li>
                         <!-- <li>
                             <a href="javascript: void(0);">
                                 <i class="fe-sidebar"></i>

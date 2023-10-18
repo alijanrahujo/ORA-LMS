@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Institute;
 use App\Models\Guardian;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class GuardianController extends Controller
 {
@@ -13,7 +14,7 @@ class GuardianController extends Controller
      */
     public function index()
     {
-        //
+        return view('institute.guardian.index');
     }
 
     /**
@@ -21,7 +22,7 @@ class GuardianController extends Controller
      */
     public function create()
     {
-        //
+        return view('institute.guardian.create');
     }
 
     /**
@@ -29,7 +30,18 @@ class GuardianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request;
+        $guardian = new Guardian;
+        $guardian->name = $request->name;
+        $guardian->address = $request->address;
+        $guardian->city = $request->city;
+        $guardian->phone = $request->phone;
+        $guardian->mobile = $request->mobile;
+        $guardian->status = $request->status;
+        $guardian->save();
+
+        return redirect('institute/guardian');
+        
     }
 
     /**

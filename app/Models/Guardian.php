@@ -10,4 +10,16 @@ class Guardian extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public static function boot() {
+        parent::boot();
+    
+        //while creating/inserting item into db  
+        static::creating(function ($model) {
+            $model->user_id = Auth()->id();
+            $model->institute_id = Auth()->id();
+        });
+    
+        
+    }
 }
