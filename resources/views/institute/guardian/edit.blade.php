@@ -1,5 +1,5 @@
 @extends('layouts.institute')
-@section('title', 'Guardian Create')
+@section('title', 'Guardian Edit')
 @section('content')
 
 <div class="content-page">
@@ -19,7 +19,7 @@
                                 <li class="breadcrumb-item active">Add</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Guardian Add</h4>
+                        <h4 class="page-title">Guardian Edit</h4>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="col-lg-12">
 
                     <div class="card-box">
-                        {!! Form::open(['route' => ['institute.guardian.store'],'method'=>'post','enctype'=>'multipart/form-data','class'=>'parsley-examples','novalidate'=>'']) !!}
+                    {!! Form::model($guardian, ['enctype'=>'multipart/form-data','method' => 'PATCH','route' => ['institute.guardian.update', $guardian->id],'class'=>'parsley-examples','novalidate'=>'']) !!}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

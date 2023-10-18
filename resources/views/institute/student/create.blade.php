@@ -30,6 +30,7 @@
 
                     <div class="card-box">
                         {!! Form::open(['route' => ['institute.student.store'],'method'=>'post','enctype'=>'multipart/form-data','class'=>'parsley-examples','novalidate'=>'']) !!}
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -45,18 +46,31 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Gurdiaon Name<span class="text-danger">*</span></label>
-                                    {!! Form::text('guardion_name', null, array('placeholder' => 'Gurdiaon Name','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label>Mother Name<span class="text-danger">*</span></label>
                                     {!! Form::text('mother_name', null, array('placeholder' => 'Mother Name','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Gurdiaon Name<span class="text-danger">*</span></label>
+                                    {!! Form::select('guard_id',$guards, null, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
+                                </div>
+                            </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Class<span class="text-danger">*</span></label>
+                                    {!! Form::select('class_id',$classes, null, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Section<span class="text-danger">*</span></label>
+                                    {!! Form::select('section_id',$sections, null, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -70,7 +84,7 @@
                                     {!! Form::select('gender',['Male','Female'], null, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <div class="row">
@@ -88,9 +102,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row">
-                        <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Date<span class="text-danger">*</span></label>
                                     {!! Form::date('date', null, array('placeholder' => 'Enter Date','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
@@ -104,11 +118,11 @@
                                 </div>
                             </div>
 
-                            
+
                         </div>
 
                         <div class="row">
-                        <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Registration Number<span class="text-danger">*</span></label>
                                     {!! Form::text('reg_number', null, array('placeholder' => 'Registration Number','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
@@ -119,7 +133,7 @@
                                     <label>Monthly Fee</label>
                                     {!! Form::text('monthly_fee', null, array('placeholder' => 'Monthly Fee','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
-                            </div>                   
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -129,7 +143,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-group text-right mb-0">
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
                                 Submit

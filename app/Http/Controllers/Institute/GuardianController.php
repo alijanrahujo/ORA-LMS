@@ -13,8 +13,9 @@ class GuardianController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('institute.guardian.index');
+    {   
+        $guardians = Guardian::get();
+        return view('institute.guardian.index', compact('guardians'));
     }
 
     /**
@@ -47,9 +48,10 @@ class GuardianController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Guardian $guardian)
+    public function show($id)
     {
-        //
+        $guardian = Guardian::find($id);
+        return view('institute.guardian.show',compact('guardian'));
     }
 
     /**
@@ -57,22 +59,35 @@ class GuardianController extends Controller
      */
     public function edit(Guardian $guardian)
     {
-        //
+        return view('institute.guardian.edit',compact('guardian'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Guardian $guardian)
+    public function update(Request $request, $id)
     {
-        //
+        // return $request;
+        $guardian = Guardian::find($id);
+        $guardian->name = $request->name;
+        $guardian->address = $request->address;
+        $guardian->city = $request->city;
+        $guardian->phone = $request->phone;
+        $guardian->mobile = $request->mobile;
+        $guardian->status = $request->status;
+        $guardian->update();
+
+        return redirect('institute/guardian')->with('success','Guardian Successfully Updated');;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Guardian $guardian)
+    public function destroy($id)
     {
-        //
+        $guardian = guardian::find($id);
+        $guardian->delete();
+        return redirect('institute/guardian')->with('success','Guardian Successfully Deleted');
+
     }
 }

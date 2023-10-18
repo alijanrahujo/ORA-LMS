@@ -22,29 +22,54 @@
                     </div>
                 </div>
             </div>
-            <!-- end page title -->            
+            <!-- end page title -->
             <a href="{{ route('institute.guardian.create') }}" class="btn btn-success mb-2">
                 <i class="fa fa-plus"></i> Add Guardian
-            </a>            
+            </a>
             <div class="row">
                 <div class="col-12">
                     <div class="card-box table-responsive">
 
-                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Institute Name</th>
-                                    <th>Owner Name</th>
+                                    <th>Guardian Name</th>
                                     <th>Address</th>
-                                    <th>Contact</th>
+                                    <th>City</th>
+                                    <th>Phone</th>
+                                    <th>Mobile</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                
+                            @foreach($guardians as $guardian)
+                            <tr>
+                                <td>{{$guardian->id}}</td>
+                                <td>{{$guardian->name}}</td>
+                                <td>{{$guardian->address}}</td>
+                                <td>{{$guardian->city}}</td>
+                                <td>{{$guardian->phone}}</td>
+                                <td>{{$guardian->mobile}}</td>
+                                <td>
+                                    <label class="badge badge-info">{{get_status($guardian->status)}}</label>
+                                </td>
+                                <td>
+                                    <a class="btn btn-success btn-xs" href="{{ route('institute.guardian.show',$guardian->id) }}">
+                                        <i class="fas fa-check-square"></i>
+                                    </a>
+                                    <a class="btn btn-warning btn-xs" href="{{ route('institute.guardian.edit',$guardian->id) }}">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    {!! Form::open(['method' => 'DELETE','route' => ['institute.guardian.destroy',
+                                    $guardian->id],'style'=>'display:inline']) !!}
+                                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
+                                    btn-danger btn-xs'] ) !!}
+                                    {!! Form::close() !!}
+
+                                </td>
+                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
