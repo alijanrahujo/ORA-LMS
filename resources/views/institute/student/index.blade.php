@@ -22,29 +22,53 @@
                     </div>
                 </div>
             </div>
-            <!-- end page title -->            
+            <!-- end page title -->
             <a href="{{ route('institute.student.create') }}" class="btn btn-success mb-2">
                 <i class="fa fa-plus"></i> Add Student
-            </a>            
+            </a>
             <div class="row">
                 <div class="col-12">
                     <div class="card-box table-responsive">
 
-                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Institute Name</th>
-                                    <th>Owner Name</th>
-                                    <th>Address</th>
-                                    <th>Contact</th>
+                                    <th>Name</th>
+                                    <th>Father Name</th>
+                                    <th>Class_id</th>
+                                    <th>Section_id</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
+                            @foreach($students as $student)
                             <tbody>
-                                
+                                <tr>
+                                    <td>{{$student->id}}</td>
+                                    <td>{{$student->name}}</td>
+                                    <td>{{$student->father_name}}</td>
+                                    <td>{{$student->class_id}}</td>
+                                    <td>{{$student->section_id}}</td>
+                                    <td>
+                                        <label class="badge badge-info">{{get_status($student->status)}}</label>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs" href="{{ route('institute.student.show',$student->id) }}">
+                                            <i class="fas fa-check-square"></i>
+                                        </a>
+                                        <a class="btn btn-warning btn-xs" href="{{ route('institute.student.edit',$student->id) }}">
+                                            <i class="far fa-edit"></i>
+                                        </a>
+                                        {!! Form::open(['method' => 'DELETE','route' => ['institute.student.destroy',
+                                        $student->id],'style'=>'display:inline']) !!}
+                                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
+                                        btn-danger btn-xs'] ) !!}
+                                        {!! Form::close() !!}
+
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

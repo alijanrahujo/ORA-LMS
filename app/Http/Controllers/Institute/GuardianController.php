@@ -77,7 +77,7 @@ class GuardianController extends Controller
         $guardian->status = $request->status;
         $guardian->update();
 
-        return redirect('institute/guardian')->with('success','Guardian Successfully Updated');;
+        return redirect('institute/guardian')->with('success','Guardian Successfully Updated');
     }
 
     /**

@@ -11,6 +11,15 @@ class Guardian extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable=[
+        'name',
+        'address',
+        'city',
+        'phone',
+        'mobile',
+        'status'
+    ];
+
     public static function boot() {
         parent::boot();
     

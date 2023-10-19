@@ -44,6 +44,7 @@
                                 </tr>
                             </thead>
                             @foreach($guardians as $guardian)
+                            <tbody>
                             <tr>
                                 <td>{{$guardian->id}}</td>
                                 <td>{{$guardian->name}}</td>
