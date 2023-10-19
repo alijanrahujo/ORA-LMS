@@ -243,17 +243,11 @@
                                 <span>Student</span>
                             </a>
                         </li>
+
                         <li>
-                            <a href="{{route('institute.guardian.index')}}">
+                            <a href="{{route('institute.subject.index')}}">
                                 <i class="fe-airplay"></i>
-                                <span>Guardian</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="{{route('institute.teacher.index')}}">
-                                <i class="fe-airplay"></i>
-                                <span>Teacher</span>
+                                <span>Subject</span>
                             </a>
                         </li>
                         <!-- <li>

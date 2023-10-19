@@ -10,4 +10,11 @@ class Subject extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = [
+        'subject',
+        'class_id',
+        'teacher_id',
+        'institute_id'
+    ];
 }
