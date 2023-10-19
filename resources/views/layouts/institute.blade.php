@@ -248,6 +248,17 @@
                             <a href="{{route('institute.class.index')}}">
                                 <i class="fe-airplay"></i>
                                 <span>Class</span>
+                        <li>
+                            <a href="{{route('institute.guardian.index')}}">
+                                <i class="fe-airplay"></i>
+                                <span>Guardian</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{route('institute.teacher.index')}}">
+                                <i class="fe-airplay"></i>
+                                <span>Teacher</span>
                             </a>
                         </li>
                         <!-- <li>
