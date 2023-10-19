@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Institute;
 
+use id;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,7 +32,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request
+        // return $request; 
         $teacher = new Teacher;
         $teacher->name = $request->name;
         $teacher->education = $request->education;
@@ -53,9 +54,12 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Teacher $teacher)
+    public function show($id)
     {
         //
+
+        $teacher = Teacher::find($id);
+        return view('institute.teacher.show',compact('teacher'));
     }
 
     /**
@@ -99,3 +103,4 @@ class TeacherController extends Controller
         return redirect('institute/teacher')->with('success', 'Teacher Successfully Deleted');
     }
 }
+

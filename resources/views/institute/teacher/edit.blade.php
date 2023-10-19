@@ -45,17 +45,11 @@
                             </div>
                         </div>
                         <div class="row">
+                            
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Gender<span class="text-danger">*</span></label>
-                                    <div class="form-check col-md-6">
-                                        <input type="radio" id="male" name="gender" class="form-check-input" value="male" required>
-                                        <label for="male" class="form-check-label">Male</label>
-                                    </div>
-                                    <div class="form-check col-md-6">
-                                        <input type="radio" id="female" name="gender" class="form-check-input" value="female" required>
-                                        <label for="female" class="form-check-label">Female</label>
-                                    </div>
+                                    {!! Form::select('gender',['male'=>'Male','female'=>'Female'], $teacher->gender, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
                                 </div>
                             </div> 
                             <div class="col-md-6">
@@ -142,5 +136,4 @@
     <script src="{{asset('assets/libs/jquery-mask-plugin/jquery.mask.min.js')}}"></script>
     <script src="{{asset('assets/libs/autonumeric/autoNumeric-min.js')}}"></script>
     <script src="{{asset('assets/js/pages/form-masks.init.js')}}"></script>
-
     @endsection

@@ -44,12 +44,14 @@
                             </div>
                         </div>
                         <div class="row">
+
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Guardian Name<span class="text-danger">*</span></label>
-                                    {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
+                                    <label>Gender<span class="text-danger">*</span></label>
+                                    {!! Form::select('gender',['male'=>'Male','female'=>'Female'], null, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
                                 </div>
                             </div> 
+                            
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>dob<span class="text-danger">*</span></label>
