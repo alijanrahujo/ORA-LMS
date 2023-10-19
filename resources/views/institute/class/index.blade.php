@@ -36,10 +36,10 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>S.No</th>
                                     <th>Class Name</th>
                                     <th>Class level</th>
-                                    <th>Class Status</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -49,7 +49,23 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$class->name}}</td>
                                 <td>{{$class->level}}</td>
-                                <td>{{$class->status}}</td>
+                                <td>
+                                    <label class="badge badge-info">{{get_status($class->status)}}</label>
+                                </td>
+                                <td>
+                                    <a class="btn btn-success btn-xs" href="{{ route('institute.class.show',$class->id) }}">
+                                        <i class="fas fa-check-square"></i>
+                                    </a>
+                                    <a class="btn btn-warning btn-xs" href="{{ route('institute.class.edit',$class->id) }}">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    {!! Form::open(['method' => 'DELETE','route' => ['institute.class.destroy',
+                                    $class->id],'style'=>'display:inline']) !!}
+                                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
+                                    btn-danger btn-xs'] ) !!}
+                                    {!! Form::close() !!}
+
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

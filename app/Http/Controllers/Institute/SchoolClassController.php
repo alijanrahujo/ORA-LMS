@@ -48,32 +48,43 @@ class SchoolClassController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SchoolClass $schoolClass)
+    public function show($id)
     {
-        //
+        $class = SchoolClass::find($id);
+        return view('institute.class.show',compact('class'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SchoolClass $schoolClass)
+    public function edit($id)
     {
-        //
+        $class = SchoolClass::find($id);
+        return view('institute.class.edit',compact('class'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SchoolClass $schoolClass)
+    public function update(Request $request, $id)
     {
-        //
+        // return $request;
+        $class = SchoolClass::find($id);
+        $class->name= $request->name;
+        $class->level =$request->level;
+        $class->status = $request->status; 
+        $class->update();
+        return redirect('institute/class')->with('Success','Class Successfully Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SchoolClass $schoolClass)
+    public function destroy($id)
     {
-        //
+        $class = SchoolClass::find($id);
+        $class->delete();
+        return redirect('institute/class')->with('success','Class Successfully Deleted');
+
     }
 }
