@@ -1,16 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 
-class Section extends Model
+class section extends Controller
 {
-    use HasFactory;
-    use SoftDeletes;
-
     protected $fillable=[
         'name',
         'capacity',
@@ -25,6 +20,7 @@ class Section extends Model
     
         //while creating/inserting item into db  
         static::creating(function ($model) {
+            $model->user_id = Auth()->id();
             $model->institute_id = Auth()->id();
         });
     

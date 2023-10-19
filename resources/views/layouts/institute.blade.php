@@ -257,6 +257,13 @@
                                 <span>Subject</span>
                             </a>
                         </li>
+
+                        <li>
+                            <a href="{{route('institute.section.index')}}">
+                                <i class="fe-airplay"></i>
+                                <span>Section</span>
+                            </a>
+                        </li>
                         <!-- <li>
                             <a href="javascript: void(0);">
                                 <i class="fe-sidebar"></i>

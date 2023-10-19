@@ -38,7 +38,11 @@ class Student extends Model
             $model->user_id = Auth()->id();
             $model->institute_id = Auth()->id();
         });
-    
-        
+    }
+
+
+    public function SchoolClass()
+    {
+        return $this->hasOne(SchoolClass::class,'id','class_id');
     }
 }
