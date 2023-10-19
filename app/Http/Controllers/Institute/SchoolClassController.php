@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Institute;
 
+use App\Models\Institute;
 use App\Models\SchoolClass;
 use Illuminate\Http\Request;
+use Spatie\FlareClient\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SchoolClassController extends Controller
 {
@@ -13,15 +16,16 @@ class SchoolClassController extends Controller
      */
     public function index()
     {
-        //
+        $classes = SchoolClass::get();
+        return View('institute.class.index',compact('classes'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('institute.class.create');
     }
 
     /**
@@ -29,7 +33,16 @@ class SchoolClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $class = new SchoolClass;
+        $class->name= $request->class_name;
+        $class->level =$request->class_level;
+        $class->status = $request->class_status; 
+        $class->institute_id = Auth::user()->id;
+
+        $class->save();
+        return redirect('institute/class')->with('success','Class Successfully Registered');
+
     }
 
     /**
