@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Institute; 
+namespace App\Http\Controllers\Institute;
+
+use id;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +16,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = Teacher::get();
-        return view("institute.teacher.index",compact('teachers'));
+        return view("institute.teacher.index", compact('teachers'));
     }
 
     /**
@@ -29,65 +31,68 @@ class TeacherController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    { 
-//return $request
+    {
+        // return $request; 
         $teacher = new Teacher;
         $teacher->name = $request->name;
         $teacher->education = $request->education;
         $teacher->gender = $request->gender;
-        $teacher->dob= $request->dob;
+        $teacher->dob = $request->dob;
         $teacher->address = $request->address;
         $teacher->city = $request->city;
         $teacher->phone = $request->phone;
         $teacher->mobile = $request->mobile;
         $teacher->email = $request->email;
         $teacher->status = $request->status;
-       $teacher->institute_id= Auth::user()->id;
-       $teacher->user_id= Auth::user()->id;
-        // $institute->status = $institute_id->institute_id;
-        // $institute->user_id = $user_id->id;
-
-        
-      //  $table->foreignId('user_id')->constrained('users');
-      
+        $teacher->institute_id = Auth::user()->id;
+        $teacher->user_id = Auth::user()->id;
         $teacher->save();
 
-        return redirect('institute/teacher')->with('success','Institute Successfully Registered');
-    } 
-
-
-
-
+        return redirect('institute/teacher')->with('success', 'Institute Successfully Registered');
+    }
 
     /**
      * Display the specified resource.
      */
-    public function show(Teacher $teacher)
+    public function show($id)
     {
         //
+
+        $teacher = Teacher::find($id);
+        return view('institute.teacher.show',compact('teacher'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Teacher $teacher)
+    public function edit($id)
     {
-        return view('teacher.edit',compact('teacher'));
+        $teacher = Teacher::find($id);
+        return view('institute.teacher.edit', compact('teacher'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request,  $id)
     {
-        $teacher->update($request->all());
-        $teacher = Teacher::find($teacher->teacher_id);
+        // return $request;
+        $teacher = Teacher::find($id);
+        $teacher->name = $request->name;
+        $teacher->education = $request->education;
+        $teacher->gender = $request->gender;
+        $teacher->dob = $request->dob;
+        $teacher->address = $request->address;
+        $teacher->city = $request->city;
+        $teacher->phone = $request->phone;
+        $teacher->mobile = $request->mobile;
         $teacher->email = $request->email;
-
+        $teacher->status = $request->status;
+        $teacher->institute_id = Auth::user()->id;
+        $teacher->user_id = Auth::user()->id;
         $teacher->update();
-        return redirect('institute/teacher')->with('succes','Teacher Successfully Updated');
-
-    }  
+        return redirect('institute/teacher')->with('succes', 'Teacher Successfully Updated');
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -95,6 +100,7 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::find($id);
         $teacher->delete();
-        return redirect('institute/teacher')->with('success','Teacher Successfully Deleted');
-    } 
+        return redirect('institute/teacher')->with('success', 'Teacher Successfully Deleted');
+    }
 }
+

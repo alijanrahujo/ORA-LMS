@@ -1,4 +1,4 @@
-@extends('layouts.institue')
+@extends('layouts.institute')
 @section('title', 'Teacher Edit')
 @section('content')
 
@@ -29,39 +29,33 @@
                 <div class="col-lg-12">
 
                     <div class="card-box">
-                        {!! Form::open(['route' => ['institute.teacher.store'],'method'=>'post','enctype'=>'multipart/form-data','class'=>'parsley-examples','novalidate'=>'']) !!}
+                        {!! Form::open(['route' => ['institute.teacher.update',$teacher->id],'method' => 'PATCH','enctype'=>'multipart/form-data','class'=>'parsley-examples','novalidate'=>'']) !!}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>name<span class="text-danger">*</span></label>
-                                    {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
+                                    {!! Form::text('name', $teacher->name, array('placeholder' => 'Name','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>education<span class="text-danger">*</span></label>
-                                    {!! Form::text('education', null, array('placeholder' => 'education','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
+                                    {!! Form::text('education', $teacher->education, array('placeholder' => 'education','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>
                         </div>
                         <div class="row">
+                            
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Gender<span class="text-danger">*</span></label>
-                                    <div class="form-check col-md-6">
-                                        <input type="radio" id="male" name="gender" class="form-check-input" value="male" required>
-                                        <label for="male" class="form-check-label">Male</label>
-                                    </div>
-                                    <div class="form-check col-md-6">
-                                        <input type="radio" id="female" name="gender" class="form-check-input" value="female" required>
-                                        <label for="female" class="form-check-label">Female</label>
-                                    </div>
+                                    {!! Form::select('gender',['male'=>'Male','female'=>'Female'], $teacher->gender, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
                                 </div>
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>dob<span class="text-danger">*</span></label>
-                                    {!! Form::date('dob', null, array('placeholder' => 'dob','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
+                                    {!! Form::date('dob',$teacher->dob, array('placeholder' => 'dob','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>
                         </div>
@@ -70,14 +64,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Address<span class="text-danger">*</span></label>
-                                    {!! Form::text('address', null, array('placeholder' => 'Enter Address','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
+                                    {!! Form::text('address', $teacher->address, array('placeholder' => 'Enter Address','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>City<span class="text-danger">*</span></label>
-                                    {!! Form::text('city', null, array('placeholder' => 'Enter City','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
+                                    {!! Form::text('city', $teacher->city, array('placeholder' => 'Enter City','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>
                         </div>
@@ -86,14 +80,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Contact Number<span class="text-danger">*</span></label>
-                                    {!! Form::text('phone', null, array('placeholder' => 'Enter Phone','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
+                                    {!! Form::text('phone',$teacher->phone, array('placeholder' => 'Enter Phone','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>mobile</label>
-                                    {!! Form::text('mobile', null, array('placeholder' => 'mobile','class' => 'form-control','parsley-trigger'=>'change')) !!}
+                                    {!! Form::text('mobile', $teacher->mobile, array('placeholder' => 'mobile','class' => 'form-control','parsley-trigger'=>'change')) !!}
                                 </div>
                             </div>
                         </div> 
@@ -101,14 +95,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email<span class="text-danger">*</span></label>
-                                    {!! Form::email('email', null, array('placeholder' => 'Enter Email','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
+                                    {!! Form::email('email',$teacher->email, array('placeholder' => 'Enter Email','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>
  
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Status<span class="text-danger">*</span></label>
-                                    {!! Form::select('status',[1=>'Active',0=>'Deactive'], null, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
+                                    {!! Form::select('status',[1=>'Active',0=>'Deactive'], $teacher->status, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
                                 </div>
                             </div>
                         </div>
@@ -142,5 +136,4 @@
     <script src="{{asset('assets/libs/jquery-mask-plugin/jquery.mask.min.js')}}"></script>
     <script src="{{asset('assets/libs/autonumeric/autoNumeric-min.js')}}"></script>
     <script src="{{asset('assets/js/pages/form-masks.init.js')}}"></script>
-
     @endsection
