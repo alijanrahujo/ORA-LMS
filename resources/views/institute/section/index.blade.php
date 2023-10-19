@@ -1,5 +1,5 @@
 @extends('layouts.institute')
-@section('title', 'student')
+@section('title', 'section')
 @section('content')
 
 <div class="content-page">
@@ -18,13 +18,13 @@
                                 <li class="breadcrumb-item active">institute</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add student</h4>
+                        <h4 class="page-title">Add section</h4>
                     </div>
                 </div>
             </div>
             <!-- end page title -->
-            <a href="{{ route('institute.student.create') }}" class="btn btn-success mb-2">
-                <i class="fa fa-plus"></i> Add Student
+            <a href="{{ route('institute.section.create') }}" class="btn btn-success mb-2">
+                <i class="fa fa-plus"></i> Add Section
             </a>
             <div class="row">
                 <div class="col-12">
@@ -35,43 +35,38 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Father Name</th>
-                                    <th>Class</th>
-                                    <th>Section</th>
-                                    <th>Phone</th>
+                                    <th>Capacity</th>
+                                    <th>Category</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
-                            </thead>
-                            @foreach($students as $student)
+                                @foreach($sections as $section)
                             <tbody>
-                                <tr>
-                                    <td>{{$student->id}}</td>
-                                    <td>{{$student->name}}</td>
-                                    <td>{{$student->father_name}}</td>
-                                    <td>{{$student->SchoolClass->name}}</td>
-                                    <td>{{$student->section_id}}</td>
-                                    <td>{{$student->section_id}}</td>
+                            <tr>
+                                <td>{{$section->id}}</td>
+                                <td>{{$section->name}}</td>
+                                <td>{{$section->capacity}}</td>
+                                <td>{{$section->category}}</td>
+                                <td>
+                                    <label class="badge badge-info">{{get_status($section->status)}}</label>
+                                </td>
+                                <td>
+                                    <a class="btn btn-success btn-xs" href="{{ route('institute.section.show',$section->id) }}">
+                                        <i class="fas fa-check-square"></i>
+                                    </a>
+                                    <a class="btn btn-warning btn-xs" href="{{ route('institute.section.edit',$section->id) }}">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    {!! Form::open(['method' => 'DELETE','route' => ['institute.section.destroy',
+                                    $section->id],'style'=>'display:inline']) !!}
+                                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
+                                    btn-danger btn-xs'] ) !!}
+                                    {!! Form::close() !!}
 
-                                    <td>
-                                        <label class="badge badge-info">{{get_status($student->status)}}</label>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-success btn-xs" href="{{ route('institute.student.show',$student->id) }}">
-                                            <i class="fas fa-check-square"></i>
-                                        </a>
-                                        <a class="btn btn-warning btn-xs" href="{{ route('institute.student.edit',$student->id) }}">
-                                            <i class="far fa-edit"></i>
-                                        </a>
-                                        {!! Form::open(['method' => 'DELETE','route' => ['institute.student.destroy',
-                                        $student->id],'style'=>'display:inline']) !!}
-                                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
-                                        btn-danger btn-xs'] ) !!}
-                                        {!! Form::close() !!}
-
-                                    </td>
-                                </tr>
-                                @endforeach
+                                </td>
+                            </tr>
+                            @endforeach
+                            </tbody>
                             </tbody>
                         </table>
                     </div>

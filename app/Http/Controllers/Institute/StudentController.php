@@ -16,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::get();
+        $students = Student::with('SchoolClass')->get();
         return view('institute.student.index', compact('students'));
     }
 
@@ -64,7 +64,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::find($id);
+        //$student = Student::find($id);
+        $student = Student::with('SchoolClass')->find($id);
         return view('institute.student.show',compact('student'));
     }
 

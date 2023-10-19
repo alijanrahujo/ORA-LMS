@@ -74,14 +74,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>DOB<span class="text-danger">*</span></label>
+                                    <label>Date of Birth<span class="text-danger">*</span></label>
                                     {!! Form::date('dob', null, array('placeholder' => 'Date Of Birth','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Gender<span class="text-danger">*</span></label>
-                                    {!! Form::select('gender',['Male','Female'], null, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
+                                    {!! Form::select('gender',['male=>'Male','female'=>Female'], null, ['placeholder'=>'Please Select','class' => 'form-control','data-toggle'=>'select2','parsley-trigger'=>'change','required'=>'required']) !!}
                                 </div>
                             </div>
 

@@ -78,6 +78,16 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-lg-6">
+                                <strong>Class</strong>
+                                {{$student->SchoolClass->name}}
+                            </div>
+                            <div class="col-lg-6">
+                                <strong>Section:</strong>
+                                {{$student->section_id}}
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-lg-6">
                                 <strong>Monthly Fee:</strong>
                                 {{$student->monthly_fee}}
                             </div>
