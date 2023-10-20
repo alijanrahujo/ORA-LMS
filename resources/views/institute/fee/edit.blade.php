@@ -28,13 +28,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card-box">
-                            {!! Form::open([
-                                'route' => ['institute.fee-type.update', $feetype->id],
-                                'method' => 'PATCH',
+                            {!! Form::model($feetype, [
                                 'enctype' => 'multipart/form-data',
-                                'class' => 'parsley-examples',
-                                'novalidate' => '',
+                                'method' => 'PATCH',
+                                'route' => ['institute.fee-type.update', $feetype->id],
                             ]) !!}
+
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

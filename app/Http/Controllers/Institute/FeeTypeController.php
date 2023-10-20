@@ -74,10 +74,9 @@ class FeeTypeController extends Controller
         $fee_Type->amount   = $request->amount;
         $fee_Type->remarks  = $request->remarks;
         $fee_Type->status = $request->status;
-        $fee_Type->institute_id = Auth::user()->id;
         $fee_Type->update();
 
-        return redirect('institute/fee')->with('success', 'Fee Type Successfully Updated');
+        return redirect('institute/fee-type')->with('success', 'Fee Type Successfully Updated');
     }
 
     /**
@@ -87,6 +86,6 @@ class FeeTypeController extends Controller
     {
         $fee_Type = FeeType::find($id);
         $fee_Type->delete();
-        return redirect('institute/fee')->with('success', 'Fee Type Successfully Deleted');
+        return redirect('institute/fee-type')->with('success', 'Fee Type Successfully Deleted');
     }
 }
