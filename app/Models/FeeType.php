@@ -10,4 +10,11 @@ class FeeType extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $fillable = [
+        'fee_type',
+        'amount',
+        'remarks',
+        'status',
+        'institue_id',
+    ];
 }

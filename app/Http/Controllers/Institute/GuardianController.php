@@ -13,7 +13,7 @@ class GuardianController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   
+    {
         $guardians = Guardian::get();
         return view('institute.guardian.index', compact('guardians'));
     }
@@ -42,7 +42,6 @@ class GuardianController extends Controller
         $guardian->save();
 
         return redirect('institute/guardian');
-        
     }
 
     /**
@@ -51,7 +50,7 @@ class GuardianController extends Controller
     public function show($id)
     {
         $guardian = Guardian::find($id);
-        return view('institute.guardian.show',compact('guardian'));
+        return view('institute.guardian.show', compact('guardian'));
     }
 
     /**
@@ -59,7 +58,7 @@ class GuardianController extends Controller
      */
     public function edit(Guardian $guardian)
     {
-        return view('institute.guardian.edit',compact('guardian'));
+        return view('institute.guardian.edit', compact('guardian'));
     }
 
     /**
@@ -77,7 +76,7 @@ class GuardianController extends Controller
         $guardian->status = $request->status;
         $guardian->update();
 
-        return redirect('institute/guardian')->with('success','Guardian Successfully Updated');;
+        return redirect('institute/guardian')->with('success', 'Guardian Successfully Updated');;
     }
 
     /**
@@ -87,7 +86,6 @@ class GuardianController extends Controller
     {
         $guardian = guardian::find($id);
         $guardian->delete();
-        return redirect('institute/guardian')->with('success','Guardian Successfully Deleted');
-
+        return redirect('institute/guardian')->with('success', 'Guardian Successfully Deleted');
     }
 }
