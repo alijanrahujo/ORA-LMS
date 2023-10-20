@@ -42,7 +42,7 @@ Route::get('home', function () {
     return redirect('login');
 })->name('home');
 
-Route::get('dashboard',function(){
+Route::get('dashboard', function () {
     return redirect('institute/dashboard');
 })->name('dashboard');
 
@@ -56,10 +56,10 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
         Route::get('dashboard', [SuperadminDashboardController::class, 'index'])->name('dashboard');
 
         //Institute
-        Route::resource('institute',SuperadminInstituteController::class);
+        Route::resource('institute', SuperadminInstituteController::class);
 
         //users, roles and permissions
-        Route::resource('users',SuperadminUserController::class);
+        Route::resource('users', SuperadminUserController::class);
         Route::resource('roles', SuperadminRoleController::class);
         Route::resource('permissions', SuperadminPermissionController::class);
     });
@@ -76,32 +76,32 @@ Route::prefix('institute')->name('institute.')->group(function () {
         Route::get('dashboard', [InstituteDashboardController::class, 'index'])->name('dashboard');
 
         //Student
-        Route::resource('student',InstituteStudentController::class);
+        Route::resource('student', InstituteStudentController::class);
 
         //Fee Type
-        Route::resource('fee-type',InstituteFeeTypeController::class);
+        Route::resource('fee-type', InstituteFeeTypeController::class);
 
         //Guardian
-        Route::resource('guardian',InstituteGuardianController::class);
+        Route::resource('guardian', InstituteGuardianController::class);
 
         //Invoice
-        Route::resource('invoice',InstituteInvoiceController::class);
+        Route::resource('invoice', InstituteInvoiceController::class);
 
         //Invoice
-        Route::resource('class',InstituteSchoolClassController::class);
+        Route::resource('class', InstituteSchoolClassController::class);
 
         //Section
-        Route::resource('section',InstituteSectionController::class);
+        Route::resource('section', InstituteSectionController::class);
 
         //Subject
-        Route::resource('subject',InstituteSubjectController::class);
+        Route::resource('subject', InstituteSubjectController::class);
 
         //Teacher
-        Route::resource('teacher',InstituteTeacherController::class);
+        Route::resource('teacher', InstituteTeacherController::class);
 
         //users, roles and permissions
-        Route::resource('users',InstituteUserController::class);
-        Route::resource('roles',InstituteRoleController::class);
-        Route::resource('permissions',InstitutePermissionController::class);
+        Route::resource('users', InstituteUserController::class);
+        Route::resource('roles', InstituteRoleController::class);
+        Route::resource('permissions', InstitutePermissionController::class);
     });
 });

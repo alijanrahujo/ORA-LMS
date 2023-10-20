@@ -91,7 +91,7 @@ class TeacherController extends Controller
         $teacher->institute_id = Auth::user()->id;
         $teacher->user_id = Auth::user()->id;
         $teacher->update();
-        return redirect('institute/teacher')->with('succes', 'Teacher Successfully Updated');
+        return redirect('institute/teacher')->with('success', 'Teacher Successfully Updated');
     }
     /**
      * Remove the specified resource from storage.
@@ -103,4 +103,3 @@ class TeacherController extends Controller
         return redirect('institute/teacher')->with('success', 'Teacher Successfully Deleted');
     }
 }
-
