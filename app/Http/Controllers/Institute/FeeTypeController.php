@@ -42,7 +42,7 @@ class FeeTypeController extends Controller
         $fee_Type->institute_id = Auth::user()->id;
         $fee_Type->save();
 
-        return redirect('institute/fee')->with('success', 'Fee Type Successfully Registered');
+        return redirect('institute/fee-type')->with('success', 'Fee Type Successfully Registered');
     }
 
     /**

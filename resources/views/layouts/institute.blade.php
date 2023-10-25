@@ -293,6 +293,15 @@
                                     </a>
                                 </li>
                             </ul>
+                             <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.invoice.index') }}">
+                                        {{-- <i class="fe-airplay"></i> --}}
+                                        <span>Invoices</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
                         </li>
                     </ul>
 
