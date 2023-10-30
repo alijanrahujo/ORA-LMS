@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Capity<span class="text-danger">*</span></label>
+                                    <label>Capacity<span class="text-danger">*</span></label>
                                     {!! Form::number('capacity', null, array('placeholder' => 'Capacity','class' => 'form-control','parsley-trigger'=>'change','required'=>'required')) !!}
                                 </div>
                             </div>

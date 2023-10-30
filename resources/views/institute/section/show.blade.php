@@ -1,5 +1,5 @@
 @extends('layouts.institute')
-@section('title', 'guardian')
+@section('title', 'section')
 @section('content')
 
 <div class="content-page">
@@ -29,32 +29,39 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <strong>Name:</strong>
-                                {{$guardian->name}}
+                                {{$section->name}}
                             </div>
                             <div class="col-lg-6">
-                                <strong>Address:</strong>
-                                {{$guardian->address}}
+                                <strong>Capacity:</strong>
+                                {{$section->capacity}}
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-lg-6">
-                                <strong>City:</strong>
-                                {{$guardian->city}}
+                                <strong>Category:</strong>
+                                {{$section->category}}
                             </div>
                             <div class="col-lg-6">
-                                <strong>phone:</strong>
-                                {{$guardian->phone}}
+                                <strong>Class:</strong>
+                                {{$section->SchoolClass->name}}
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-lg-6">
-                                <strong>Mobile:</strong>
-                                {{$guardian->mobile}}
+                                <strong>Section:</strong>
+                                {{$section->teacher_id}}
                             </div>
+                            <div class="col-lg-6">
+                                <strong>Institute:</strong>
+                                {{$section->institute_id}}
+                            </div>
+                        </div>
+                        <div class="row mt-3">
                             <div class="col-lg-6">
                                 <strong>Status:</strong>
-                                {{$guardian->status?'Active':'Deactive'}}
+                                {{$section->status?'Active':'Deactive'}}
                             </div>
+
                         </div>
                     </div>
                 </div>

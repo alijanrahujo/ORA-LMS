@@ -17,7 +17,7 @@ class SectionController extends Controller
     public function index()
     {
         $sections = Section::get();
-        return view('institute.section.index',compact('sections'));
+        return view('institute.section.index', compact('sections'));
     }
 
     /**
@@ -27,7 +27,7 @@ class SectionController extends Controller
     {
         $classes = SchoolClass::pluck('name', 'id');
         $teachers = Teacher::pluck('name', 'id');
-        return view('institute.section.create', compact('classes','teachers'));
+        return view('institute.section.create', compact('classes', 'teachers'));
     }
 
     /**
@@ -45,16 +45,16 @@ class SectionController extends Controller
         $section->save();
 
         return redirect('institute/section');
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Section $section)
+    public function show($id)
     {
-       
-       
+
+        $section = Section::with('SchoolClass')->find($id);
+        return view('institute.section.show', compact('section'));
     }
 
     /**
@@ -64,15 +64,24 @@ class SectionController extends Controller
     {
         $classes = SchoolClass::pluck('name', 'id');
         $teachers = Teacher::pluck('name', 'id');
-        return view('institute.section.edit', compact('classes','teachers', 'section'));
+        return view('institute.section.edit', compact('classes', 'teachers', 'section'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Section $section)
+    public function update(Request $request, $id)
     {
-        
+        $section = Section::find($id);
+        $section->name = $request->name;
+        $section->capacity = $request->capacity;
+        $section->category = $request->category;
+        $section->status = $request->status;
+        $section->teacher_id = $request->teacher_id;
+        $section->class_id = $request->class_id;
+        $section->update();
+
+        return redirect('institute/section')->with('success', 'Section Successfully Updated');
     }
 
     /**
@@ -82,6 +91,6 @@ class SectionController extends Controller
     {
         $section = section::find($id);
         $section->delete();
-        return redirect('institute/section')->with('success','Section Successfully Deleted');
+        return redirect('institute/section')->with('success', 'Section Successfully Deleted');
     }
 }
