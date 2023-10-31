@@ -1,5 +1,5 @@
 @extends('layouts.institute')
-@section('title', 'student')
+@section('title', 'Assignment')
 @section('content')
 
     <div class="content-page">
@@ -15,10 +15,10 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">institute</li>
+                                    <li class="breadcrumb-item active">institute/Assignment</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Student details</h4>
+                            <h4 class="page-title">Assignment details</h4>
                         </div>
                     </div>
                 </div>
@@ -28,75 +28,50 @@
                         <div class="card-box table-responsive">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <strong>Name:</strong>
-                                    {{ $student->name }}
+                                    <strong>Title</strong>
+                                    {{ $assignment->title }}
                                 </div>
                                 <div class="col-lg-6">
-                                    <strong>Father Name:</strong>
-                                    {{ $student->father_name }}
+                                    <strong>Description</strong>
+                                    {{ $assignment->description }}
                                 </div>
                             </div>
-                            <div class="row mt-3">
+                            <div class="row">
                                 <div class="col-lg-6">
-                                    <strong>Mother Name:</strong>
-                                    {{ $student->mother_name }}
+                                    <strong>DeadLine</strong>
+                                    {{ $assignment->deadline }}
                                 </div>
+
                                 <div class="col-lg-6">
-                                    <strong>Date of Birth:</strong>
-                                    {{ $student->dob }}
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <strong>Gender:</strong>
-                                    {{ $student->gender ? 'Male' : 'Female' }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>phone:</strong>
-                                    {{ $student->phone }}
+                                    <strong>Section</strong>
+                                    {{ $assignment->Section->name }}
                                 </div>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <strong>Mobile:</strong>
-                                    {{ $student->mobile }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>Date:</strong>
-                                    {{ $student->date }}
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <strong>Roll Number:</strong>
-                                    {{ $student->roll_number }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>Registration Number:</strong>
-                                    {{ $student->reg_number }}
-                                </div>
-                            </div>
+
                             <div class="row mt-3">
                                 <div class="col-lg-6">
                                     <strong>Class</strong>
-                                    {{ $student->SchoolClass->name }}
+                                    {{ $assignment->SchoolClass->name }}
                                 </div>
                                 <div class="col-lg-6">
-                                    <strong>Section:</strong>
-                                    {{ $student->section_id }}
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <strong>Monthly Fee:</strong>
-                                    {{ $student->monthly_fee }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>Status:</strong>
-                                    {{ $student->status ? 'Active' : 'Deactive' }}
+                                    <strong>Subject</strong>
+                                    {{ $assignment->Subject->subject }}
                                 </div>
 
                             </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <strong>File</strong>
+                                    {{ $assignment->file }}
+
+                                </div>
+                            </div>
+                            {{-- <div class="row mt-3">
+                                <div class="col-lg-6">
+                                    <strong>Status:</strong>
+                                    {{ $assignment->status ? 'Active' : 'Deactive' }}
+                                </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

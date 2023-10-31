@@ -260,4 +260,4 @@
         <script src="{{ asset('assets/libs/autonumeric/autoNumeric-min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/form-masks.init.js') }}"></script>
 
-    @endsection
+    @endsection 

@@ -241,6 +241,24 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
+
+
+
+
+                        <li>
+                            <a href="{{ route('institute.guardian.index') }}">
+                                <i class="fe-airplay"></i>
+                                <span>Guardian</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('institute.teacher.index') }}">
+                                <i class="fe-airplay"></i>
+                                <span>Teacher</span>
+                            </a>
+                        </li>
+
                         <li>
                             <a href="{{ route('institute.student.index') }}">
                                 <i class="fe-airplay"></i>
@@ -248,37 +266,57 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a href="{{ route('institute.class.index') }}">
-                                <i class="fe-airplay"></i>
-                                <span>Class</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('institute.guardian.index') }}">
-                                <i class="fe-airplay"></i>
-                                <span>Guardian</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('institute.subject.index') }}">
-                                <i class="fe-airplay"></i>
-                                <span>Subject</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('institute.teacher.index') }}">
-                                <i class="fe-airplay"></i>
-                                <span>Teacher</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('institute.section.index') }}">
-                                <i class="fe-airplay"></i>
-                                <span>Section</span>
-                            </a>
-                        </li>
 
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fe-sidebar"></i>
+                                <span>Acadamic</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.section.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Section</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.class.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Class</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.subject.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Subject</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.syllabus.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Syllabus</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.assignment.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Assignment</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="fe-sidebar"></i>
@@ -293,7 +331,7 @@
                                     </a>
                                 </li>
                             </ul>
-                             <ul class="nav-second-level" aria-expanded="false">
+                            <ul class="nav-second-level" aria-expanded="false">
                                 <li>
                                     <a href="{{ route('institute.invoice.index') }}">
                                         {{-- <i class="fe-airplay"></i> --}}
@@ -301,7 +339,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            
+
                         </li>
                     </ul>
 

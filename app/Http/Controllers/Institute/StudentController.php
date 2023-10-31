@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Institute;
 
+use App\Models\Section;
 use App\Models\Student;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Guardian;
 use App\Models\SchoolClass;
-use App\Models\Section;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class StudentController extends Controller
 {
@@ -18,7 +18,28 @@ class StudentController extends Controller
     {
         $students = Student::with('SchoolClass')->get();
         return view('institute.student.index', compact('students'));
+
     }
+
+
+
+    // public function index()
+    // {
+    //     $data['class'] = SchoolClass::get(["class_id", "class_id"]);
+
+    //     return view('index', $data);
+    // }
+
+    // public function index2(Request $request)
+    // {
+    //     $data['section'] = Section::where(
+    //         "class_id",
+    //         $request->class_id
+    //     )->get(["section_name", "id"]);
+
+    //     return response()->json($data);
+    // }
+ 
 
     /**
      * Show the form for creating a new resource.
@@ -39,6 +60,7 @@ class StudentController extends Controller
     {
         // return $request;
         $student = new Student;
+        $student = $request->get('class_id');
         $student->name = $request->name;
         $student->father_name = $request->father_name;
         $student->guardian_id = $request->guard_id;
@@ -66,7 +88,7 @@ class StudentController extends Controller
     {
         //$student = Student::find($id);
         $student = Student::with('SchoolClass')->find($id);
-        return view('institute.student.show',compact('student'));
+        return view('institute.student.show', compact('student'));
     }
 
     /**

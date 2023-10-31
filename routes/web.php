@@ -10,6 +10,8 @@ use App\Http\Controllers\Institute\SchoolClassController as InstituteSchoolClass
 use App\Http\Controllers\Institute\SectionController as InstituteSectionController;
 use App\Http\Controllers\Institute\StudentController as InstituteStudentController;
 use App\Http\Controllers\Institute\SubjectController as InstituteSubjectController;
+use App\Http\Controllers\Institute\SyllabusController as InstituteSyllabusController;
+use App\Http\Controllers\Institute\AssignmentController as InstituteAssignmentController;
 use App\Http\Controllers\Institute\TeacherController as InstituteTeacherController;
 use App\Http\Controllers\Institute\users\RoleController as InstituteRoleController;
 use App\Http\Controllers\Institute\users\UserController as InstituteUserController;
@@ -98,6 +100,12 @@ Route::prefix('institute')->name('institute.')->group(function () {
 
         //Teacher
         Route::resource('teacher', InstituteTeacherController::class);
+
+        //Syllabus
+        Route::resource('syllabus', InstituteSyllabusController::class);
+        
+        //Assignment 
+        Route::resource('assignment',InstituteAssignmentController::class);
 
         //users, roles and permissions
         Route::resource('users', InstituteUserController::class);
