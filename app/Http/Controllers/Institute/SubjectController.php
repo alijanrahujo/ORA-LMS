@@ -37,7 +37,7 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
+        //return $request;
         $subjects = new Subject;
         $subjects->subject = $request->subject;
         $subjects->class_id = $request->class_id;

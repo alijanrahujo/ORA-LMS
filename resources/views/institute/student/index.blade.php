@@ -35,11 +35,11 @@
                                 <thead>
                                     {{-- <select class="form-control" id="classes">
                                         <option value="">Select Class</option>
-                                         @if (count($classes) > 0) 
+                                         @if (count($classes) > 0)
                                         @foreach ($classes as $class_id)
                                             <option value="{{ $class_id }}">{{ $class_id->class_name }}</option>
                                         @endforeach
-                                         @endif 
+                                         @endif
                                     </select> --}}
                                     <div>
                                         <select id="section" class="form-control">
@@ -64,8 +64,8 @@
                                             <td>{{ $student->name }}</td>
                                             <td>{{ $student->father_name }}</td>
                                             <td>{{ $student->SchoolClass->name }}</td>
-                                            <td>{{ $student->section_id }}</td>
-                                            <td>{{ $student->section_id }}</td>
+                                            <td>{{ $student->Section->name }}</td>
+                                            <td>{{ $student->phone }}</td>
 
                                             <td>
                                                 <label class="badge badge-info">{{ get_status($student->status) }}</label>
@@ -87,7 +87,7 @@
                                                 {!! Form::button('<i class="fa fa-trash"></i>', [
                                                     'type' => 'submit',
                                                     'class' => 'btn
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        btn-danger btn-xs',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        btn-danger btn-xs',
                                                 ]) !!}
                                                 {!! Form::close() !!}
 

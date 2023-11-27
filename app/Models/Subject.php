@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Subject extends Model
 {
@@ -17,4 +18,16 @@ class Subject extends Model
         'teacher_id',
         'institute_id'
     ];
+    public function Teacher()
+    {
+        return $this->hasOne(Teacher::class, 'id', 'teacher_id');
+    }
+    public function SchoolClass()
+    {
+        return $this->hasOne(SchoolClass::class, 'id', 'class_id');
+    }
+    public function Institute()
+    {
+        return $this->hasOne(Institute::class, 'id', 'institute_id');
+    }
 }

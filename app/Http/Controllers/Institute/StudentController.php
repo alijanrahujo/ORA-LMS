@@ -18,7 +18,6 @@ class StudentController extends Controller
     {
         $students = Student::with('SchoolClass')->get();
         return view('institute.student.index', compact('students'));
-
     }
 
 
@@ -39,7 +38,7 @@ class StudentController extends Controller
 
     //     return response()->json($data);
     // }
- 
+
 
     /**
      * Show the form for creating a new resource.
@@ -58,9 +57,11 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
+
+        // Instantiate a new Student object
         $student = new Student;
-        $student = $request->get('class_id');
+
+        // Set the properties of the Student object
         $student->name = $request->name;
         $student->father_name = $request->father_name;
         $student->guardian_id = $request->guard_id;
@@ -76,8 +77,11 @@ class StudentController extends Controller
         $student->status = $request->status;
         $student->class_id = $request->class_id;
         $student->section_id = $request->section_id;
+
+        // Save the Student object to the database
         $student->save();
 
+        // Redirect to the specified URI
         return redirect('institute/student');
     }
 

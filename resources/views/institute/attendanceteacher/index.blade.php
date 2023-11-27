@@ -1,5 +1,5 @@
 @extends('layouts.institute')
-@section('title', 'Subject')
+@section('title', 'Attendance Teacher')
 @section('content')
 
     <div class="content-page">
@@ -7,7 +7,6 @@
 
             <!-- Start Content-->
             <div class="container-fluid">
-
                 <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
@@ -15,18 +14,18 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Subject</li>
+                                    <li class="breadcrumb-item active">Teacher Attendance</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Subject</h4>
+                            <h4 class="page-title">Add Teacher Attendance</h4>
                         </div>
                     </div>
                 </div>
                 <!-- end page title -->
-
-                <a href="{{ route('institute.subject.create') }}" class="btn btn-success mb-2">
-                    <i class="fa fa-plus"></i> Add subject
+                <a href="{{ route('institute.teacher_attendance.create') }}" class="btn btn-success mb-2">
+                    <i class="fa fa-plus"></i> Add Teacher Attendance
                 </a>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box table-responsive">
@@ -35,42 +34,40 @@
                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Subject</th>
-                                        <th>Class</th>
-                                        <th>Teacher</th>
-                                        <th>Institute</th>
-                                        <th>Actions</th>
+                                        <th>S.N0</th>
+                                        <th>Teacher Name</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($subjects as $subject)
+                                    @foreach ($attendanceteacher as $attendanceteacher)
                                         <tr>
-                                            <th>{{ $subject->id }}</th>
-                                            <td>{{ $subject->subject }}</td>
-                                            <td>{{ $subject->SchoolClass->name }}</td>
-                                            <td>{{ $subject->Teacher->name }}</td>
-                                            <td>{{ $subject->Institute->name }}</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $attendanceteacher->name }}</td>
+                                            <td>{{ $attendanceteacher->date }}</td>
+                                            <td>
+                                                <label
+                                                    class="badge badge-info">{{ get_status($attendanceteacher->status) }}</label>
+                                            </td>
                                             <td>
                                                 <a class="btn btn-success btn-xs"
-                                                    href="{{ route('institute.subject.show', $subject->id) }}">
+                                                    href="{{ route('institute.teacher_attendance.show', $attendanceteacher->id) }}">
                                                     <i class="fas fa-check-square"></i>
-                                                </a>
-                                                <a class="btn btn-warning btn-xs"
-                                                    href="{{ route('institute.subject.edit', $subject->id) }}">
-                                                    <i class="far fa-edit"></i>
                                                 </a>
                                                 {!! Form::open([
                                                     'method' => 'DELETE',
-                                                    'route' => ['institute.subject.destroy', $subject->id],
+                                                    'route' => ['institute.teacher_attendance.destroy', $attendanceteacher->id],
                                                     'style' => 'display:inline',
                                                 ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs']) !!}
+                                                {!! Form::button('<i class="fa fa-trash"></i>', [
+                                                    'type' => 'submit',
+                                                    'class' => 'btn btn-danger btn-xs',
+                                                ]) !!}
                                                 {!! Form::close() !!}
                                             </td>
 
-
-                                            <!-- <td>{!! Form::submit('Edit', null, ['class' => 'form-control']) !!}</td> -->
                                         </tr>
                                     @endforeach
                                 </tbody>

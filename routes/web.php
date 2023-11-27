@@ -13,6 +13,8 @@ use App\Http\Controllers\Institute\SubjectController as InstituteSubjectControll
 use App\Http\Controllers\Institute\SyllabusController as InstituteSyllabusController;
 use App\Http\Controllers\Institute\AssignmentController as InstituteAssignmentController;
 use App\Http\Controllers\Institute\TeacherController as InstituteTeacherController;
+use App\Http\Controllers\Institute\AttendanceTeacherController as InstituteAttendanceTeacherController;
+use App\Http\Controllers\Institute\AttendanceStudentController as InstituteAttendanceStudentController;
 use App\Http\Controllers\Institute\users\RoleController as InstituteRoleController;
 use App\Http\Controllers\Institute\users\UserController as InstituteUserController;
 use App\Http\Controllers\Institute\users\PermissionController as InstitutePermissionController;
@@ -23,6 +25,9 @@ use App\Http\Controllers\Superadmin\InstituteController as SuperadminInstituteCo
 use App\Http\Controllers\Superadmin\users\RoleController as SuperadminRoleController;
 use App\Http\Controllers\Superadmin\users\UserController as SuperadminUserController;
 use App\Http\Controllers\Superadmin\users\PermissionController as SuperadminPermissionController;
+use App\Models\Institute;
+
+use App\Http\Controllers\Institute\AttendanceController as InstituteAttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,9 +108,21 @@ Route::prefix('institute')->name('institute.')->group(function () {
 
         //Syllabus
         Route::resource('syllabus', InstituteSyllabusController::class);
-        
-        //Assignment 
-        Route::resource('assignment',InstituteAssignmentController::class);
+
+        //Assignment
+        Route::resource('assignment', InstituteAssignmentController::class);
+
+        //Attendance of teacher
+        Route::resource('teacher_attendance', InstituteAttendanceTeacherController::class);
+        Route::post('teacher_attendance/create', [InstituteAttendanceTeacherController::class, 'create'])->name('teacher_attendance.create');
+       // Route::post('teacher_attendance/store', [InstituteAttendanceTeacherController::class, 'store'])->name('teacher_attendance.store');
+
+        //Attendance of Students
+        Route::resource('student_attendance', InstituteAttendanceStudentController::class); 
+        Route::post('student_attendance/create', [InstituteAttendanceStudentController::class, 'create'])->name('student_attendance.create');
+
+        //Attendance
+        Route::resource('attendance', InstituteAttendanceController::class);
 
         //users, roles and permissions
         Route::resource('users', InstituteUserController::class);
