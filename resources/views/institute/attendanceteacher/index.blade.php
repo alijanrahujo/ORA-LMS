@@ -37,6 +37,7 @@
                                         <th>S.N0</th>
                                         <th>Teacher Name</th>
                                         <th>Date</th>
+                                        <th>Attendance</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -48,14 +49,28 @@
                                             <td>{{ $attendanceteacher->name }}</td>
                                             <td>{{ $attendanceteacher->date }}</td>
                                             <td>
+                                                @if ($attendanceteacher->attendance == 1)
+                                                    Present
+                                                @elseif($attendanceteacher->attendance == 2)
+                                                    Late Present With Excuse
+                                                @elseif($attendanceteacher->attendance == 3)
+                                                    Late Present
+                                                @elseif($attendanceteacher->attendance == 4)
+                                                    Absent
+                                                @else
+                                                    Unknown Status
+                                                @endif
+                                            </td>
+
+                                            <td>
                                                 <label
                                                     class="badge badge-info">{{ get_status($attendanceteacher->status) }}</label>
                                             </td>
                                             <td>
-                                                <a class="btn btn-success btn-xs"
+                                                {{-- <a class="btn btn-success btn-xs"
                                                     href="{{ route('institute.teacher_attendance.show', $attendanceteacher->id) }}">
                                                     <i class="fas fa-check-square"></i>
-                                                </a>
+                                                </a> --}}
                                                 {!! Form::open([
                                                     'method' => 'DELETE',
                                                     'route' => ['institute.teacher_attendance.destroy', $attendanceteacher->id],

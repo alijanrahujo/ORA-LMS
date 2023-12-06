@@ -26,62 +26,62 @@
 
     @yield('style')
     <style>
-    .header-title {
-        text-align: right;
-    }
-
-    .left-side-menu,
-    .logo-box {
-        background-color: #282262;
-    }
-
-    #sidebar-menu>ul>li>a.active,
-    #sidebar-menu>ul>li>a:hover,
-    #sidebar-menu>ul>li>a:focus {
-        color: #fff;
-        background-color: #07023f;
-    }
-
-    @media only screen and (max-width:800px) {
-
-        #table-ali tbody,
-        #table-ali tr,
-        #table-ali td,
-        #table-ali th {
-            display: block;
-        }
-
-        #table-ali td img {
-            margin-left: auto;
-        }
-
-        #table-ali tr {
-            margin-bottom: 15px;
-        }
-
-        #table-ali thead {
-            display: none;
-        }
-
-        #table-ali tbody td,
-        #table-ali tfoot th {
+        .header-title {
             text-align: right;
-            padding-left: 50%;
-            position: relative;
         }
 
-        #table-ali tbody td::before,
-        #table-ali tfoot th::before {
-            content: attr(data-title);
-            position: absolute;
-            left: 0;
-            width: 50%;
-            padding-left: 15px;
-            text-align: left;
-            font-weight: bold;
+        .left-side-menu,
+        .logo-box {
+            background-color: #282262;
         }
 
-    }
+        #sidebar-menu>ul>li>a.active,
+        #sidebar-menu>ul>li>a:hover,
+        #sidebar-menu>ul>li>a:focus {
+            color: #fff;
+            background-color: #07023f;
+        }
+
+        @media only screen and (max-width:800px) {
+
+            #table-ali tbody,
+            #table-ali tr,
+            #table-ali td,
+            #table-ali th {
+                display: block;
+            }
+
+            #table-ali td img {
+                margin-left: auto;
+            }
+
+            #table-ali tr {
+                margin-bottom: 15px;
+            }
+
+            #table-ali thead {
+                display: none;
+            }
+
+            #table-ali tbody td,
+            #table-ali tfoot th {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+
+            #table-ali tbody td::before,
+            #table-ali tfoot th::before {
+                content: attr(data-title);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 15px;
+                text-align: left;
+                font-weight: bold;
+            }
+
+        }
     </style>
     @livewireStyles
 </head>
@@ -325,14 +325,6 @@
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li>
-                                    <a href="{{ route('institute.student_attendance.index') }}">
-                                        <i class="fe-airplay"></i>
-                                        <span>Student Attendance</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li>
                                     <a href="{{ route('institute.teacher_attendance.index') }}">
                                         <i class="fe-airplay"></i>
                                         <span>Teacher Attendance</span>
@@ -340,12 +332,11 @@
                                 </li>
                             </ul>
 
-
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li>
-                                    <a href="{{ route('institute.attendance.index') }}">
+                                    <a href="{{ route('institute.student_attendance.index') }}">
                                         <i class="fe-airplay"></i>
-                                        <span>Attendance</span>
+                                        <span>Student Attendance</span>
                                     </a>
                                 </li>
                             </ul>
@@ -430,15 +421,18 @@
                     <strong>Customize </strong> the overall color scheme, layout, etc.
                 </div>
                 <div class="mb-2">
-                    <img src="{{ asset('assets/images/layouts/light.png') }}" class="img-fluid img-thumbnail" alt="">
+                    <img src="{{ asset('assets/images/layouts/light.png') }}" class="img-fluid img-thumbnail"
+                        alt="">
                 </div>
                 <div class="custom-control custom-switch mb-3">
-                    <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked />
+                    <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch"
+                        checked />
                     <label class="custom-control-label" for="light-mode-switch">Light Mode</label>
                 </div>
 
                 <div class="mb-2">
-                    <img src="{{ asset('assets/images/layouts/dark.png') }}" class="img-fluid img-thumbnail" alt="">
+                    <img src="{{ asset('assets/images/layouts/dark.png') }}" class="img-fluid img-thumbnail"
+                        alt="">
                 </div>
                 <div class="custom-control custom-switch mb-3">
                     <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
@@ -448,7 +442,8 @@
                 </div>
 
                 <div class="mb-2">
-                    <img src="{{ asset('assets/images/layouts/rtl.png') }}" class="img-fluid img-thumbnail" alt="">
+                    <img src="{{ asset('assets/images/layouts/rtl.png') }}" class="img-fluid img-thumbnail"
+                        alt="">
                 </div>
                 <div class="custom-control custom-switch mb-3">
                     <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch"
@@ -457,7 +452,8 @@
                 </div>
 
                 <div class="mb-2">
-                    <img src="{{ asset('assets/images/layouts/dark-rtl.png') }}" class="img-fluid img-thumbnail" alt="">
+                    <img src="{{ asset('assets/images/layouts/dark-rtl.png') }}" class="img-fluid img-thumbnail"
+                        alt="">
                 </div>
                 <div class="custom-control custom-switch mb-5">
                     <input type="checkbox" class="custom-control-input theme-choice" id="dark-rtl-mode-switch"
@@ -493,64 +489,64 @@
     @yield('script')
     @livewireScripts
     <script>
-    window.addEventListener('swal:modal', event => {
-        Swal.fire({
-            type: event.detail.type,
-            title: event.detail.title,
-            text: event.detail.text,
-            icon: event.detail.icon,
-        });
-        if (event.detail.reload) {
-            location.reload();
-        }
-    });
-
-    window.addEventListener('swal:confirm', event => {
-        Swal.fire({
-            type: event.detail.type,
-            title: event.detail.title,
-            text: event.detail.text,
-            showCancelButton: !0,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes sure!"
-        }).then(function(t) {
-            if (t.value) {
-                window.livewire.emit('change', event.detail.id);
-            } else if (event.detail.reload) {
+        window.addEventListener('swal:modal', event => {
+            Swal.fire({
+                type: event.detail.type,
+                title: event.detail.title,
+                text: event.detail.text,
+                icon: event.detail.icon,
+            });
+            if (event.detail.reload) {
                 location.reload();
             }
-        })
-    });
+        });
+
+        window.addEventListener('swal:confirm', event => {
+            Swal.fire({
+                type: event.detail.type,
+                title: event.detail.title,
+                text: event.detail.text,
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes sure!"
+            }).then(function(t) {
+                if (t.value) {
+                    window.livewire.emit('change', event.detail.id);
+                } else if (event.detail.reload) {
+                    location.reload();
+                }
+            })
+        });
     </script>
 
 
     @if ($message = Session::get('success'))
-    <script>
-    $.toast({
-        heading: "Well done!",
-        text: "{!! $message !!}",
-        position: "top-right",
-        loaderBg: "#5ba035",
-        icon: "success",
-        hideAfter: 3e3,
-        stack: 1
-    })
-    </script>
+        <script>
+            $.toast({
+                heading: "Well done!",
+                text: "{!! $message !!}",
+                position: "top-right",
+                loaderBg: "#5ba035",
+                icon: "success",
+                hideAfter: 3e3,
+                stack: 1
+            })
+        </script>
     @endif
 
     @if ($message = Session::get('error'))
-    <script>
-    $.toast({
-        heading: "Oh snap!",
-        text: "{!! $message !!}",
-        position: "top-right",
-        loaderBg: "#bf441d",
-        icon: "error",
-        hideAfter: 3e3,
-        stack: 1
-    })
-    </script>
+        <script>
+            $.toast({
+                heading: "Oh snap!",
+                text: "{!! $message !!}",
+                position: "top-right",
+                loaderBg: "#bf441d",
+                icon: "error",
+                hideAfter: 3e3,
+                stack: 1
+            })
+        </script>
     @endif
 
     <?php
@@ -563,15 +559,15 @@
     ?>
 
     <script>
-    $.toast({
-        heading: "Oh snap!",
-        text: "{!! $allerrors !!}",
-        position: "top-right",
-        loaderBg: "#bf441d",
-        icon: "error",
-        hideAfter: 3e3,
-        stack: 1
-    })
+        $.toast({
+            heading: "Oh snap!",
+            text: "{!! $allerrors !!}",
+            position: "top-right",
+            loaderBg: "#bf441d",
+            icon: "error",
+            hideAfter: 3e3,
+            stack: 1
+        })
     </script>
     <?php endif ?>
 </body>

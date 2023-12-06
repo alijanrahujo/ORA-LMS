@@ -5,8 +5,14 @@
          <div class="content">
 
              <!-- Start Content-->
+             {!! Form::open([
+                 'route' => ['institute.student_attendance.store'],
+                 'method' => 'post',
+                 'enctype' => 'multipart/form-data',
+                 'class' => 'parsley-examples',
+                 'novalidate' => '',
+             ]) !!}
              <div class="container-fluid">
-
                  <!-- start page title -->
                  <div class="row">
                      <div class="col-12">
@@ -25,15 +31,7 @@
                  <!-- end page title -->
                  <div class="row">
                      <div class="col-lg-12">
-
                          <div class="card-box">
-                             {!! Form::open([
-                                 'route' => ['institute.student_attendance.create'],
-                                 'method' => 'post',
-                                 'enctype' => 'multipart/form-data',
-                                 'class' => 'parsley-examples',
-                                 'novalidate' => '',
-                             ]) !!}
                              <div class="row">
                                  <div class="col-md-6">
                                      <div class="form-group">
@@ -72,7 +70,7 @@
                                          ]) !!}
                                      </div>
                                  </div>
-                                 <div class="col-md-6">
+                                 {{-- <div class="col-md-6">
                                      <div class="form-group">
                                          <label>Subject<span class="text-danger">*</span></label>
                                          {!! Form::select('subject_id', $subjects, null, [
@@ -83,9 +81,8 @@
                                              'required' => 'required',
                                          ]) !!}
                                      </div>
-                                 </div>
-                             </div>
-                             <div class="row">
+                                 </div> --}}
+
                                  <div class="col-md-6">
                                      <div class="form-group">
                                          <label>Status<span class="text-danger">*</span></label>
@@ -101,16 +98,13 @@
                              </div>
 
                              <div class="form-group text-right mb-0">
-                                 <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
+                                 <button class="btn btn-primary waves-effect waves-light mr-1 getStudent" type="button">
                                      Submit
                                  </button>
-                                 <button type="reset" class="btn btn-secondary waves-effect waves-light">
-                                     Cancel
-                                 </button>
                              </div>
-                             {!! Form::close() !!}
                          </div> <!-- end card-box -->
                      </div>
+
                      <!-- end col -->
                  </div>
                  <!-- end row -->
@@ -125,79 +119,19 @@
                      <div class="col-lg-12">
 
                          <div class="card-box">
-                             {!! Form::open([
-                                 'route' => ['institute.student_attendance.store'],
-                                 'method' => 'post',
-                                 'enctype' => 'multipart/form-data',
-                                 'class' => 'parsley-examples',
-                                 'novalidate' => '',
-                             ]) !!}
                              <div class="row">
                                  <div class="col-12">
-                                     <table class="table table-stripped table table-bordered ">
-                                         <tr>
-                                             <th>S.No</th>
-                                             <th>Name</th>
-                                             <th>Roll-Number</th>
-                                             <th>Email</th>
-                                             <th>Attendance</th>
-
-                                         </tr>
-                                         @foreach ($students as $student)
+                                     <table id="attendanceTable" class="table table-stripped table table-bordered">
+                                         <thead>
                                              <tr>
-                                                 <td>{{ $loop->iteration }}</td>
-                                                 <td>{{ $student->student_name }}</td>
-                                                 <td>{{ $student->roll_number }}</td>
-                                                 <td>{{ $student->email }}</td>
-                                                 <td>
-                                                     <div class="form-check">
-                                                         <div class="form-check-inline">
-                                                             <input class="form-check-input" type="radio"
-                                                                 name="attendance[].{{ $student->id }}"
-                                                                 id="{{ $student->id }}" value="1">
-                                                             <label class="form-check-label" for="present">
-                                                                 Present
-                                                             </label>
-                                                         </div>
-
-                                                         <div class="form-check-inline">
-                                                             <input class="form-check-input" type="radio"
-                                                                 name="attendance[].{{ $student->id }}"
-                                                                 id="{{ $student->id }}" value="2">
-                                                             <label class="form-check-label" for="lateExcuse">
-                                                                 Late Present With Excuse
-                                                             </label>
-                                                         </div>
-
-                                                         <div class="form-check-inline">
-                                                             <input class="form-check-input" type="radio"
-                                                                 name="attendance[].{{ $student->id }}"
-                                                                 id="{{ $student->id }}" value="3">
-                                                             <label class="form-check-label" for="late">
-                                                                 Late Present
-                                                             </label>
-                                                         </div>
-
-                                                         <div class="form-check-inline">
-                                                             <input class="form-check-input" type="radio"
-                                                                 name="attendance[].{{ $student->id }}"
-                                                                 id="{{ $student->id }}" value="4">
-                                                             <label class="form-check-label" for="absent">
-                                                                 Absent
-                                                             </label>
-                                                         </div>
-                                                     </div>
-                                                 </td>
+                                                 <th>S.No</th>
+                                                 <th>Name</th>
+                                                 <th>Roll-Number</th>
+                                                 <th>Phone</th>
+                                                 <th>Attendance</th>
                                              </tr>
-                                             <input type="hidden" name="student_id[]" value="{{ $student->id }}">
-                                         @endforeach
-
-                                         <input type="hidden" name="date" value="{{ $date }}">
-                                         <input type="hidden" name="status" value="{{ $status }}">
-                                         <input type="hidden" name="class_id" value="{{ $classes }}">
-                                         <input type="hidden" name="section_id" value="{{ $sections }}">
-                                         <input type="hidden" name="subject_id" value="{{ $subjects }}">
- 
+                                         </thead>
+                                         <tbody></tbody>
                                      </table>
                                  </div>
 
@@ -210,25 +144,114 @@
 
                                          </div>
 
-                                         {!! Form::close() !!}
                                      </div> <!-- end card-box -->
                                  </div>
                                  <!-- end col -->
                              </div>
+
                              <!-- end row -->
-                         </div> <!-- end container-fluid -->
-                     </div> <!-- end content -->
+                         </div> <!-- end card -->
+                     </div> <!-- end col -->
+                 </div> <!-- end row -->
+             </div> <!-- end container-fluid -->
+             {!! Form::close() !!}
+         </div> <!-- end content -->
 
-                 </div> <!-- end content -->
-             @endsection
-             @section('script')
-                 <!-- Plugin js-->
-                 <script src="{{ asset('assets/libs/parsleyjs/parsley.min.js') }}"></script>
+     </div> <!-- end content -->
+ @endsection
+ @section('script')
+     <!-- Plugin js-->
+     <script src="{{ asset('assets/libs/parsleyjs/parsley.min.js') }}"></script>
 
-                 <!-- Validation init js-->
-                 <script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script>
+     <!-- Validation init js-->
+     <script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script>
 
-                 <script src="{{ asset('assets/libs/jquery-mask-plugin/jquery.mask.min.js') }}"></script>
-                 <script src="{{ asset('assets/libs/autonumeric/autoNumeric-min.js') }}"></script>
-                 <script src="{{ asset('assets/js/pages/form-masks.init.js') }}"></script>
-             @endsection
+     <script src="{{ asset('assets/libs/jquery-mask-plugin/jquery.mask.min.js') }}"></script>
+     <script src="{{ asset('assets/libs/autonumeric/autoNumeric-min.js') }}"></script>
+     <script src="{{ asset('assets/js/pages/form-masks.init.js') }}"></script>
+     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+     <script>
+         /***********************Ajax Code without datatable***************************/
+         //  $('.getStudent').click(function() {
+         //      var class_id = $('select[name="class_id"]').val();
+         //      var section_id = $('select[name="section_id"]').val();
+         //      // var subject_id = $('select[name="subject_id"]').val();
+         //      var status = $('select[name="status"]').val(); // Corrected selector
+         //      //  var student_name = $('input[name="student_name"]').val(); // Corrected selector
+         //      //  var phone = $('input[name="phone"]').val(); // Corrected selector
+         //      var date = $('input[name="date"]').val(); // Corrected selector
+         //      //  var roll_number = $('input[name="roll_number"]').val(); // Corrected selector
+
+         //      // Use these values in your AJAX request
+         //      $.ajax({
+         //          type: 'POST',
+         //          url: "{{ Route('institute.student_attendance.create') }}", // Replace with your actual API endpoint
+         //          data: {
+         //              class_id: class_id,
+         //              section_id: section_id,
+         //              subject_id: subject_id,
+         //              status: status,
+         //              date: date,
+         //              _token: "{{ csrf_token() }}"
+         //          },
+         //          success: function(response) {
+         //              // Handle the success response
+         //              console.log(response);
+         //          },
+         //          error: function(error) {
+         //              // Handle the error response
+         //              console.error(error);
+         //          }
+         //      });
+         //  });
+
+         /*************************USe dataTable*********************************/
+         $(document).ready(function() {
+             var dataTable = $('#attendanceTable').DataTable({
+                 processing: true,
+                 serverSide: true,
+                 ajax: {
+                     url: "{{ Route('institute.student_attendance.create') }}", // Replace with your actual server-side endpoint
+                     type: 'POST',
+                     data: function(d) {
+                         d.class_id = $('select[name="class_id"]').val();
+                         d.section_id = $('select[name="section_id"]').val();
+                         // d.subject_id = $('select[name="subject_id"]').val(); // Uncomment this line if subject_id is needed
+                         d.status = $('select[name="status"]').val();
+                         d.date = $('input[name="date"]').val();
+                         d._token = "{{ csrf_token() }}";
+                     },
+                 },
+                 columns: [
+                     // Define your DataTable columns here based on your server-side response
+                     {
+                         data: 'id',
+                         classname: 'id'
+                     },
+                     {
+                         data: 'name',
+                         classname: 'name'
+                     },
+                     {
+                         data: 'roll_number',
+                         classname: 'roll_number'
+                     },
+                     {
+                         data: 'phone',
+                         classname: 'phone'
+                     },
+                     {
+                         data: 'action',
+                         classname: 'action'
+                     },
+                     // Add more columns as needed
+                 ],
+             });
+
+             $('.getStudent').click(function() {
+                 // Refresh DataTable on button click
+                 dataTable.ajax.reload();
+             });
+         });
+     </script>
+ @endsection

@@ -75,7 +75,7 @@ class AttendanceTeacherController extends Controller
         $teacher->save();
 
         return redirect('institute/teacher_attendance');
-    } 
+    }
     /**
      * Display the specified resource.
      */
