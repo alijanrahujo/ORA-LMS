@@ -344,6 +344,45 @@
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="fe-sidebar"></i>
+                                <span>Exam</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.exam.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Exam</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.exam_schedule.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Exam Schedule</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.grade.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Grade</span>
+                                    </a>
+                                </li>
+                            </ul>
+                             <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.exam_attendance.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Exam Attendance</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fe-sidebar"></i>
                                 <span>Accounts</span>
                                 <span class="menu-arrow"></span>
                             </a>

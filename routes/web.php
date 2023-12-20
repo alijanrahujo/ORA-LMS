@@ -15,6 +15,10 @@ use App\Http\Controllers\Institute\AssignmentController as InstituteAssignmentCo
 use App\Http\Controllers\Institute\TeacherController as InstituteTeacherController;
 use App\Http\Controllers\Institute\AttendanceTeacherController as InstituteAttendanceTeacherController;
 use App\Http\Controllers\Institute\AttendanceStudentController as InstituteAttendanceStudentController;
+use App\Http\Controllers\Institute\ExamController as InstituteExamController;
+use App\Http\Controllers\Institute\Exam_ScheduleController as InstituteExam_ScheduleController;
+use App\Http\Controllers\Institute\Exam_AttendanceController as InstituteExam_AttendanceController;
+use App\Http\Controllers\Institute\GradeController as InstituteGradeController;
 use App\Http\Controllers\Institute\users\RoleController as InstituteRoleController;
 use App\Http\Controllers\Institute\users\UserController as InstituteUserController;
 use App\Http\Controllers\Institute\users\PermissionController as InstitutePermissionController;
@@ -111,7 +115,16 @@ Route::prefix('institute')->name('institute.')->group(function () {
 
         //Assignment
         Route::resource('assignment', InstituteAssignmentController::class);
+        //Exam
+        Route::resource('exam', InstituteExamController::class);
 
+        //Exam Schedule
+        Route::resource('exam_schedule', InstituteExam_ScheduleController::class);
+        //Grade
+        Route::resource('grade', InstituteGradeController::class);
+        //
+        Route::resource('exam_attendance',InstituteExam_AttendanceController::class);
+        Route::post('exam_attendance/create', [InstituteExam_AttendanceController::class, 'create'])->name('exam_attendance.create');
         //Attendance of teacher
         Route::resource('teacher_attendance', InstituteAttendanceTeacherController::class);
         Route::post('teacher_attendance/create', [InstituteAttendanceTeacherController::class, 'create'])->name('teacher_attendance.create');

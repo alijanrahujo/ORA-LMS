@@ -31,10 +31,10 @@ class Student extends Model
         'class_id',
         'section_id',
     ];
-    public function Section()
-    {
-        return $this->hasOne(Section::class, 'id', 'section_id');
-    }
+    // public function Section()
+    // {
+    //     return $this->hasOne(Section::class, 'id', 'section_id');
+    // }
 
 
 
@@ -48,7 +48,10 @@ class Student extends Model
             $model->institute_id = Auth()->id();
         });
     }
-
+    public function Section()
+    {
+        return $this->hasOne(Section::class, 'id', 'section_id');
+    }
 
     public function SchoolClass()
     {

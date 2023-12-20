@@ -29,7 +29,7 @@
                 <div class="col-lg-12">
 
                     <div class="card-box">
-                    {!! Form::model($student, ['enctype'=>'multipart/form-data','method' => 'PATCH','route' => ['institute.student.update', $student->id],'class'=>'parsley-examples','novalidate'=>'']) !!} 
+                    {!! Form::model($student, ['enctype'=>'multipart/form-data','method' => 'PATCH','route' => ['institute.student.update', $student->id],'class'=>'parsley-examples','novalidate'=>'']) !!}
                         @csrf
                         <div class="row">
                             <div class="col-md-6">

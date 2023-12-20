@@ -62,8 +62,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <strong>File</strong>
-                                    {{ $assignment->file }}
-
+                                    {{-- {{ $assignment->file }} --}}
+                                    <a href="{{ asset('Assignments/' . $assignment->file) }}" download>
+                                        <button>Download File</button>
+                                    </a>
                                 </div>
                             </div>
                             {{-- <div class="row mt-3">

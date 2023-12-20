@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Institute;
 
+use App\Models\Section;
+use App\Models\Subject;
 use App\Models\Assignment;
+use App\Models\SchoolClass;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\SchoolClass;
-use App\Models\Section;
-use App\Models\Subject; 
+use Illuminate\Support\Facades\Storage;
 
 class AssignmentController extends Controller
 {
@@ -38,6 +39,21 @@ class AssignmentController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $file = $request->file('file');
+        $filename = time() . '_' . $file->getClientOriginalName();
+
+        // Move the uploaded file to the storage directory
+        $file->move(public_path('Assignments'), $filename);
+
+
+        // $file = $request->file('file');
+        // $path = $file->store('Assignments');
+        // $fullPath = Storage::path($path);
+
+        // $request->files('$file')->store('Assignment');
+
         $assignment = new Assignment;
         $assignment->title       = $request->title;
         $assignment->description = $request->description;
@@ -45,7 +61,7 @@ class AssignmentController extends Controller
         $assignment->class_id    = $request->class_id;
         $assignment->section_id  = $request->section_id;
         $assignment->subject_id  = $request->subject_id;
-        $assignment->file = $request->file;
+        $assignment->file = $filename;
         $assignment->save();
         return redirect('institute/assignment')->with('Success', 'Assignment Added Successfully');
     }
