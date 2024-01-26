@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Exam_Attendance extends Model
+class Mark extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -17,15 +17,20 @@ class Exam_Attendance extends Model
         'section_id',
         'roll',
         'mobile',
-        'attendance',
+        'obt',
+        'marks',
 
     ];
-    protected $table = "exam_attendance";
+    protected $table = "marks";
     public $timestamps = true;
 
     public function Student()
     {
         return $this->hasOne(Student::class, 'id', 'student_id');
+    }
+    public function Section()
+    {
+        return $this->hasOne(Section::class, 'id', 'section_id');
     }
 
     public function SchoolClass()

@@ -57,4 +57,9 @@ class Student extends Model
     {
         return $this->hasOne(SchoolClass::class, 'id', 'class_id');
     }
+
+    public function Subject()
+    {
+        return $this->hasOne(Subject::class, 'id', 'subject_id');
+    }
 }

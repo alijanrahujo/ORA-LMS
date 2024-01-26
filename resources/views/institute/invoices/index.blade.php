@@ -41,7 +41,7 @@
                                         <th>Class</th>
                                         <th>Fee Type</th>
                                         <th>Amount</th>
-                                        <th>Remarks</th>n
+                                        <th>Remarks</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>

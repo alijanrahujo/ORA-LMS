@@ -64,7 +64,7 @@
                                  <div class="col-md-6">
                                      <div class="form-group">
                                          <label>Section<span class="text-danger">*</span></label>
-                                         {!! Form::select('section_id', $subjects, null, [
+                                         {!! Form::select('section_id', $sections, null, [
                                              'placeholder' => 'section',
                                              'class' => 'form-control',
                                              'parsley-trigger' => 'change',

@@ -16,7 +16,8 @@ class Subject extends Model
         'subject',
         'class_id',
         'teacher_id',
-        'institute_id'
+        'institute_id',
+        'marks'
     ];
     public function Teacher()
     {

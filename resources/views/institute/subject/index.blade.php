@@ -40,6 +40,7 @@
                                         <th>Class</th>
                                         <th>Teacher</th>
                                         <th>Institute</th>
+                                        <th>Marks</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -51,6 +52,7 @@
                                             <td>{{ $subject->SchoolClass->name }}</td>
                                             <td>{{ $subject->Teacher->name }}</td>
                                             <td>{{ $subject->Institute->name }}</td>
+                                            <td>{{ $subject->marks }}</td>
                                             <td>
                                                 <a class="btn btn-success btn-xs"
                                                     href="{{ route('institute.subject.show', $subject->id) }}">

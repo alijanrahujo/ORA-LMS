@@ -18,7 +18,7 @@ class SubjectController extends Controller
     {
 
         $subjects = Subject::get();
-        return view('institute.subject.index',compact('subjects'));
+        return view('institute.subject.index', compact('subjects'));
     }
 
     /**
@@ -26,10 +26,10 @@ class SubjectController extends Controller
      */
     public function create()
     {
-         $class = SchoolClass::pluck('name','id');
-         $teacher = Teacher::pluck('name','id');
+        $class = SchoolClass::pluck('name', 'id');
+        $teacher = Teacher::pluck('name', 'id');
 
-        return view("institute.subject.create", compact('class','teacher'));
+        return view("institute.subject.create", compact('class', 'teacher'));
     }
 
     /**
@@ -39,6 +39,7 @@ class SubjectController extends Controller
     {
         //return $request;
         $subjects = new Subject;
+        $subjects->marks = $request->marks;
         $subjects->subject = $request->subject;
         $subjects->class_id = $request->class_id;
         $subjects->teacher_id = $request->teacher_id;
@@ -46,7 +47,6 @@ class SubjectController extends Controller
         $subjects->save();
 
         return redirect('institute/subject');
-
     }
 
     /**
@@ -55,10 +55,10 @@ class SubjectController extends Controller
     public function show($id)
     {
         $subject = Subject::find($id);
-        $class = SchoolClass::pluck('name','id');
-        $teacher = Teacher::pluck('name','id');
-        
-       return view('institute.subject.show', compact('subject','class', 'teacher'));
+        $class = SchoolClass::pluck('name', 'id');
+        $teacher = Teacher::pluck('name', 'id');
+
+        return view('institute.subject.show', compact('subject', 'class', 'teacher'));
     }
 
     /**
@@ -67,11 +67,11 @@ class SubjectController extends Controller
     public function edit($id)
     {
         $subject = Subject::find($id);
-        $class = SchoolClass::pluck('name','id');
-        $teacher = Teacher::pluck('name','id');
+        $class = SchoolClass::pluck('name', 'id');
+        $teacher = Teacher::pluck('name', 'id');
 
-       
-        return view("institute.subject.edit", compact('subject','class', 'teacher'));
+
+        return view("institute.subject.edit", compact('subject', 'class', 'teacher'));
     }
 
     /**
@@ -79,7 +79,7 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-    
+
         $subject = Subject::find($id);
         $subject->subject = $request->subject;
         $subject->class_id = $request->class_id;
@@ -87,7 +87,7 @@ class SubjectController extends Controller
         $subject->institute_id = Auth::user()->id;
         $subject->update();
 
-        
+
         return redirect('institute/subject');
     }
 

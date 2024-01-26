@@ -50,8 +50,8 @@ class Exam_AttendanceController extends Controller
                     // ];
 
                     // foreach ($attendanceOptions as $value => $label) {
-                        $html .=
-                '
+                    $html .=
+                        '
                   <div class="form-check-inline">
                         <input class="form-check-input" type="radio" name="attendance[' . $row->id . ']" value="Present" checked>
                         <label class="form-check-label" for="optionPresent">Present</label>
@@ -86,7 +86,7 @@ class Exam_AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
+       // return $request;
         $studentData = [];
 
         foreach ($request->student_id as $key => $val) {
