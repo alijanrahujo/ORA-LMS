@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --bs-background-color: #e2edeb;
+    --primary-bg-color: #64c5b1;
+    
+}
+
+
+.card-title {
+    font-size: 14px;
+}
+.card{
+    /* padding: 10px; */
+    max-width: 100%;
+    width: 200px;
+    height: 150px;
+    background-color: var(--bs-background-color);
+    transition: transform 0.3s;
+   
+    /* width: 350px; */
+}
+.card:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.card img
+{
+    margin-top: 10px;
+    max-width: 100%;
+   width:50%;
+    height: auto;
+    /* height: 100px;
+    width: 100px; */
+}
+.card_inside{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    margin: 0;
+    color: primary;
+    background-color: white;
+    color: var(--primary-bg-color) !important;
+    border: 1px solid var(--primary-bg-color) ;
+    transition: transform 0.3s;
+}
+.card_inside:hover{
+    background-color: var(--primary-bg-color);
+    color: white !important;
+    border: 1px solid white ;
+    transform: scale(1.1);
+}
+
+.card_inside h3,p{
+    font-weight: bold;
+    color: var(--primary-bg-color) !important;
+}
+.card_inside:hover h3{
+    font-weight: bold;
+    color: white !important;
+}
+.card_inside:hover p{
+    font-weight: bold;
+    color: white !important;
+}
+
+
+
+/* #card1{
+    background: linear-gradient(150deg,#CE9FFC,#5c4fda 100%); 
+}
+#card2{
+    background: linear-gradient(150deg, #FAD961, #F76B1C 100%); 
+}
+#card3{
+    background: linear-gradient(150deg, #e53034,#e24bbd 100%); 
+}
+#card4{
+    background: linear-gradient(150deg,  #34ff76, #6f40e1 100%); 
+} */
+
+.card_inside .fa-solid, .fas {
+    font-weight: 900;
+    font-size: 3rem;
+}
