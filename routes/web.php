@@ -27,10 +27,9 @@ use App\Http\Controllers\Institute\users\PermissionController as InstitutePermis
 use App\Http\Controllers\Superadmin\DashboardController as SuperadminDashboardController;
 use App\Http\Controllers\Superadmin\AuthController as SuperadminAuthController;
 use App\Http\Controllers\Superadmin\InstituteController as SuperadminInstituteController;
-use App\Http\Controllers\Superadmin\users\RoleController as SuperadminRoleController;
-use App\Http\Controllers\Superadmin\users\UserController as SuperadminUserController;
-use App\Http\Controllers\Superadmin\users\PermissionController as SuperadminPermissionController;
-use App\Models\Institute;
+use App\Http\Controllers\Superadmin\Users\RoleController as SuperadminRoleController;
+use App\Http\Controllers\Superadmin\Users\UserController as SuperadminUserController;
+use App\Http\Controllers\Superadmin\Users\PermissionController as SuperadminPermissionController;
 
 use App\Http\Controllers\Institute\AttendanceController as InstituteAttendanceController;
 
