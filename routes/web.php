@@ -123,23 +123,23 @@ Route::prefix('institute')->name('institute.')->group(function () {
         Route::resource('exam_schedule', InstituteExam_ScheduleController::class);
         //Grade
         Route::resource('grade', InstituteGradeController::class);
-        
+
         //mark
         Route::resource('mark', InstituteMarkController::class);
-        Route::post('mark/create', [InstituteMarkController::class, 'create'])->name('mark.create');
+        //Route::post('mark/create', [InstituteMarkController::class, 'create'])->name('mark.create');
 
         //exam Attedance
         Route::resource('exam_attendance',InstituteExam_AttendanceController::class);
-        Route::post('exam_attendance/create', [InstituteExam_AttendanceController::class, 'create'])->name('exam_attendance.create');
+        //Route::post('exam_attendance/create', [InstituteExam_AttendanceController::class, 'create'])->name('exam_attendance.create');
 
         //Attendance of teacher
         Route::resource('teacher_attendance', InstituteAttendanceTeacherController::class);
-        Route::post('teacher_attendance/create', [InstituteAttendanceTeacherController::class, 'create'])->name('teacher_attendance.create');
+        //Route::post('teacher_attendance/create', [InstituteAttendanceTeacherController::class, 'create'])->name('teacher_attendance.create');
         // Route::post('teacher_attendance/store', [InstituteAttendanceTeacherController::class, 'store'])->name('teacher_attendance.store');
 
         //Attendance of Students
         Route::resource('student_attendance', InstituteAttendanceStudentController::class);
-        Route::post('student_attendance/create', [InstituteAttendanceStudentController::class, 'create'])->name('student_attendance.create');
+        //Route::post('student_attendance/create', [InstituteAttendanceStudentController::class, 'create'])->name('student_attendance.create');
 
         //Attendance of user
         // Route::resource('user_attendance', InstituteAttendanceUserController::class);
