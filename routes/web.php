@@ -20,9 +20,9 @@ use App\Http\Controllers\Institute\ExamController as InstituteExamController;
 use App\Http\Controllers\Institute\Exam_ScheduleController as InstituteExam_ScheduleController;
 use App\Http\Controllers\Institute\Exam_AttendanceController as InstituteExam_AttendanceController;
 use App\Http\Controllers\Institute\GradeController as InstituteGradeController;
-use App\Http\Controllers\Institute\users\RoleController as InstituteRoleController;
-use App\Http\Controllers\Institute\users\UserController as InstituteUserController;
-use App\Http\Controllers\Institute\users\PermissionController as InstitutePermissionController;
+use App\Http\Controllers\Institute\Users\RoleController as InstituteRoleController;
+use App\Http\Controllers\Institute\Users\UserController as InstituteUserController;
+use App\Http\Controllers\Institute\Users\PermissionController as InstitutePermissionController;
 
 use App\Http\Controllers\Superadmin\DashboardController as SuperadminDashboardController;
 use App\Http\Controllers\Superadmin\AuthController as SuperadminAuthController;
