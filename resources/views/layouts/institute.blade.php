@@ -237,14 +237,11 @@
                     <ul class="metismenu" id="side-menu">
 
                         <li>
-                            <a href="{{ route('superadmin.dashboard') }}">
+                            <a href="{{ route('institute.dashboard') }}">
                                 <i class="fe-airplay"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-
-
-
 
                         <li>
                             <a href="{{ route('institute.guardian.index') }}">
