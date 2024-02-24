@@ -16,6 +16,8 @@ use App\Http\Controllers\Institute\TeacherController as InstituteTeacherControll
 use App\Http\Controllers\Institute\AttendanceTeacherController as InstituteAttendanceTeacherController;
 use App\Http\Controllers\Institute\AttendanceStudentController as InstituteAttendanceStudentController;
 use App\Http\Controllers\Institute\MarkController as InstituteMarkController;
+use App\Http\Controllers\Institute\MarkDistributionController as InstituteMarkDistributionController;
+use App\Http\Controllers\Institute\AcademicYearController as InstituteAcademicYearController;
 use App\Http\Controllers\Institute\ExamController as InstituteExamController;
 use App\Http\Controllers\Institute\Exam_ScheduleController as InstituteExam_ScheduleController;
 use App\Http\Controllers\Institute\Exam_AttendanceController as InstituteExam_AttendanceController;
@@ -123,13 +125,23 @@ Route::prefix('institute')->name('institute.')->group(function () {
         Route::resource('exam_schedule', InstituteExam_ScheduleController::class);
         //Grade
         Route::resource('grade', InstituteGradeController::class);
-        
+
         //mark
         Route::resource('mark', InstituteMarkController::class);
         Route::post('mark/create', [InstituteMarkController::class, 'create'])->name('mark.create');
+        Route::get('mark/download-pdf', [InstituteMarkController::class, 'download-pdf'])->name('mark.download.pdf');
+        // Route::get('/institute/mark/show/{id}', 'YourController@show')->name('institute.mark.show');
+
+
+
+        //mark_distribution
+        Route::resource('mark_distribution', InstituteMarkDistributionController::class);
+
+        //academic_year
+        Route::resource('academic_year', InstituteAcademicYearController::class);
 
         //exam Attedance
-        Route::resource('exam_attendance',InstituteExam_AttendanceController::class);
+        Route::resource('exam_attendance', InstituteExam_AttendanceController::class);
         Route::post('exam_attendance/create', [InstituteExam_AttendanceController::class, 'create'])->name('exam_attendance.create');
 
         //Attendance of teacher

@@ -62,4 +62,8 @@ class Student extends Model
     {
         return $this->hasOne(Subject::class, 'id', 'subject_id');
     }
+    public function Marks()
+    {
+        return $this->hasMany(Mark::class, 'student_id', 'id');
+    }
 }

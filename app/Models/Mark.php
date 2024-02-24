@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Exam;
+use App\Models\Section;
+use App\Models\Student;
+use App\Models\Subject;
+use App\Models\SchoolClass;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Mark extends Model
 {
@@ -40,7 +45,7 @@ class Mark extends Model
 
     public function Subject()
     {
-        return $this->hasOne(Subject::class, 'id', 'subjcet_id');
+        return $this->hasOne(Subject::class, 'id', 'subject_id');
     }
 
     public function Exam()

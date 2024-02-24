@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Institute;
 
+use Dompdf\Dompdf;
 use App\Models\Exam;
 use App\Models\Mark;
 use App\Models\Section;
@@ -17,10 +18,18 @@ class MarkController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mark = Mark::get();
-        return view('institute.mark.index', compact('mark'));
+        $search = $request['search'] ?? "";
+        if ($search != "") {
+            $mark = Mark::where('student_name', '=', $search)->get();
+        } else {
+            $mark = Mark::all();
+        }
+        // $mark = Mark_Distribtion::get();
+        $data = compact('mark', 'search');
+        // $mark = Mark::get();
+        return view('institute.mark.index')->with($data);
     }
 
     /**
@@ -118,26 +127,17 @@ class MarkController extends Controller
     /**
      * Display the specified resource.
      */
+
     public function show($id)
     {
-        $mark = Mark::find($id);
-        return view('institute.mark.show', compact('mark'));
-    }
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Mark $mark)
-    {
-        //
+        $mark = Mark::with('subject')->find($id);
+        // $subject = $mark->with('subject')->get();
+        $student = Student::find($mark->student_id);
+        //return $student->marks;
+        // Returning the view with data
+        return view('institute.mark.show', compact('mark', 'student'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Mark $mark)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

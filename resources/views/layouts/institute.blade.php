@@ -371,7 +371,7 @@
                                     </a>
                                 </li>
                             </ul>
-                             <ul class="nav-second-level" aria-expanded="false">
+                            <ul class="nav-second-level" aria-expanded="false">
                                 <li>
                                     <a href="{{ route('institute.exam_attendance.index') }}">
                                         <i class="fe-airplay"></i>
@@ -391,6 +391,14 @@
                                     <a href="{{ route('institute.mark.index') }}">
                                         <i class="fe-airplay"></i>
                                         <span>Mark</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.mark_distribution.index') }}">
+                                        <i class="fe-airplay"></i>
+                                        <span>Mark Distribution</span>
                                     </a>
                                 </li>
                             </ul>
@@ -414,6 +422,22 @@
                                     <a href="{{ route('institute.invoice.index') }}">
                                         {{-- <i class="fe-airplay"></i> --}}
                                         <span>Invoices</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fe-sidebar"></i>
+                                <span>Administrator</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('institute.academic_year.index') }}">
+                                        {{-- <i class="fe-airplay"></i> --}}
+                                        <span>Academic Year</span>
                                     </a>
                                 </li>
                             </ul>
