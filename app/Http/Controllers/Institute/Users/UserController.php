@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Models\AcademicYear;
 
 class UserController extends Controller
 {
@@ -27,7 +28,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
-        return view('superadmin.users.create', compact('roles'));
+        $academic_year = AcademicYear::pluck('year', 'id');
+        return view('superadmin.users.create', compact('roles','academic_year' ));
     }
 
     /**
@@ -123,5 +125,6 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('superadmin.users.index')
             ->with('success', 'User deleted successfully');
-    }
+
+   }
 }

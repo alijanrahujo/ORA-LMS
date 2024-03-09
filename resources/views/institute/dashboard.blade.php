@@ -31,62 +31,62 @@
                     <div class="card-body ">
                         <h5 class="card-title text-center">Dashboard</h5>
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center" >
                     <div><img src="{{ asset('assets/image/graduated.png') }}"  alt="student Pic" ></div>
                     <div class="card-body ">
                         <h5 class="card-title text-center">student</h5>
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center" >
                     <div><img src="{{ asset('assets/image/parents.png') }}"  alt="parents Pic" ></div>
                     <div class="card-body ">
                         <h5 class="card-title text-center">Parents</h5>
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center" >
                     <div><img src="{{ asset('assets/image/teacher.png') }}"  alt="teacher Pic" ></div>
                     <div class="card-body ">
                         <h5 class="card-title text-center">Teacher</h5>
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center" >
                     <div><img src="{{ asset('assets/image/team.png') }}"  alt="user Pic" ></div>
                     <div class="card-body ">
                         <h5 class="card-title text-center">User</h5>
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center" >
                     <div><img src="{{ asset('assets/image/chat.png') }}"  alt="Message Pic" ></div>
                     <div class="card-body ">
                         <h5 class="card-title text-center">Message</h5>
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center" >
                     <div><img src="{{ asset('assets/image/digital-marketing.png') }}"  alt="Media Pic" ></div>
                     <div class="card-body ">
                         <h5 class="card-title text-center">Media</h5>
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center" >
                     <div><img src="{{ asset('assets/image/email.png') }}"  alt="Mail/Sms Pic" ></div>
                     <div class="card-body ">
                         <h5 class="card-title text-center">Mail/Sms</h5>
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center" >
                     <div><img src="{{ asset('assets/image/online addmission.png') }}"  alt="online addmission" ></div>
                     <div class="card-body ">
                         <h5 class="card-title text-center">Online Addmission</h5>
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center" >
                     <div><img src="{{ asset('assets/image/visitor information.png') }}"  alt="Visitor Information" ></div>
                     <div class="card-body ">
                         <h5 class="card-title text-center text-sm">Visitor Information</h5>
                     </div>
-                </div>   
-                
+                </div>
+
             </div>
             <!--- end row -->
 
@@ -100,7 +100,7 @@
                         </div>
                         <i class="fa-solid fa-user-graduate"></i>
                         <!-- <i class="mdi mdi-currency-usd border rounded-full  primary p-3 display-6"></i> -->
-                        
+
                     </div>
                 </div>
 
@@ -112,7 +112,7 @@
                         </div>
                         <i class="fa-solid fa-house-chimney-user"></i>
                         <!-- <i class="mdi mdi-currency-usd border rounded-full  primary p-3 display-6"></i> -->
-                        
+
                     </div>
 
                 </div>
@@ -124,7 +124,7 @@
                         </div>
                         <i class="fa-solid fa-person-chalkboard"></i>
                         <!-- <i class="mdi mdi-currency-usd border rounded-full  primary p-3 display-6"></i> -->
-                        
+
                     </div>
 
                 </div>
@@ -136,13 +136,13 @@
                         </div>
                         <i class="fa-solid fa-book"></i>
                         <!-- <i class="mdi mdi-currency-usd border rounded-full  primary p-3 display-6"></i> -->
-                        
+
                     </div>
 
                 </div>
             </div>
 
-        </div> 
+        </div>
         <!-- end container-fluid -->
 
     </div> <!-- starting main  content section -->

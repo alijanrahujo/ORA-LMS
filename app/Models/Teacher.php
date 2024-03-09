@@ -23,5 +23,6 @@ class Teacher extends Model
         'status',
         'institue_id',
         'user_id',
+        'academic_year_id'
     ];
 }

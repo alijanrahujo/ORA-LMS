@@ -186,10 +186,7 @@
                                         ]) !!}
                                     </div>
                                 </div>
-
-
                             </div>
-
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -215,6 +212,18 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Academic Year<span class="text-danger">*</span></label>
+                                        {!! Form::select('academic_year_id', $academic_year, null, [
+                                            'placeholder' => 'Please Select',
+                                            'class' => 'form-control',
+                                            'data-toggle' => 'Academic year',
+                                            'parsley-trigger' => 'change',
+                                            'required' => 'required',
+                                        ]) !!}
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Status<span class="text-danger">*</span></label>
@@ -260,4 +269,4 @@
         <script src="{{ asset('assets/libs/autonumeric/autoNumeric-min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/form-masks.init.js') }}"></script>
 
-    @endsection 
+    @endsection

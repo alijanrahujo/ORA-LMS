@@ -1,5 +1,5 @@
  @extends('layouts.institute')
- @section('title', 'Mark')
+ @section('title', 'Academic')
  @section('content')
 
      <div class="content-page">
@@ -18,68 +18,46 @@
                                      <li class="breadcrumb-item active">Institute</li>
                                  </ol>
                              </div>
-                             <h4 class="page-title">Add Mark</h4>
+                             <h4 class="page-title">Add Academic Year</h4>
                          </div>
                      </div>
                  </div>
                  <!-- end page title -->
-                 {{-- <a href="{{ route('institute.mark.create') }}" class="btn btn-success mb-2">
-                     <i class="fa fa-plus"></i> Add Mark
-                 </a> --}}
-
-                 <div class="row">
-
-                     <div class="col-md-6 ">
-                         <a href="{{ route('institute.mark.create') }}" class="btn btn-success mb-2">
-                             <i class="fa fa-plus"></i> Add Mark
-                         </a>
-                     </div>
-                     <div class="col-md-4">
-
-                     </div>
-                     <div class="col-md-2 text-right">
-                         <form action="">
-                             <input type="search" name="search" placeholder="Search here" class="form-control">
-                         </form>
-                     </div>
-                 </div>
+                 <a href="{{ route('institute.academic_year.create') }}" class="btn btn-success mb-2">
+                     <i class="fa fa-plus"></i> Add Academic Year
+                 </a>
                  <div class="row">
                      <div class="col-12">
                          <div class="card-box table-responsive">
 
                              <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
                                  style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                 <thead>
+                                   <thead>
                                      <tr>
                                          <th>S.N0</th>
-                                         <th>Name</th>
-                                         <th>Mobile</th>
-                                         <th>Roll</th>
-                                         <th>Marks</th>
+                                         <th>Year</th>
+                                         <th>Year Title</th>
+                                         <th>Starting Date</th>
+                                         <th>Ending Date</th>
                                          <th>Action</th>
                                      </tr>
                                  </thead>
                                  <tbody>
-                                     @foreach ($mark as $mark)
+                                     @foreach ($academic as $academic)
                                          <tr>
                                              <td>{{ $loop->iteration }}</td>
-                                             <td>{{ $mark->Student->name }}</td>
-                                             {{-- <td>{{ $mark->SchoolClass->name }}</td> --}}
-                                             <td>{{ $mark->Student->mobile }}</td>
-                                             <td>{{ $mark->Student->roll_number }}</td>
-                                             <td>{{ $mark->marks }}</td>
-                                             {{-- <td>{{$teacher->status}}</td> <td>{{$teacher->action}}</td> --}}
-
-
+                                             <td>{{ $academic->year }}</td>
+                                             <td>{{ $academic->year_title }}</td>
+                                             <td>{{ $academic->starting_date }}</td>
+                                             <td>{{ $academic->ending_date }}</td>
                                              <td>
-                                                 <a class="btn btn-success btn-xs"
-                                                     href="{{ route('institute.mark.show', $mark->id) }}">
-                                                     <i class="fas fa-check-square"></i>
+                                                 <a class="btn btn-warning btn-xs"
+                                                     href="{{ route('institute.academic_year.edit', $academic->id) }}">
+                                                     <i class="far fa-edit"></i>
                                                  </a>
-
                                                  {!! Form::open([
                                                      'method' => 'DELETE',
-                                                     'route' => ['institute.mark.destroy', $mark->id],
+                                                     'route' => ['institute.academic_year.destroy', $academic->id],
                                                      'style' => 'display:inline',
                                                  ]) !!}
                                                  {!! Form::button('<i class="fa fa-trash"></i>', [
@@ -91,6 +69,7 @@
                                              </td>
                                          </tr>
                                      @endforeach
+
                                  </tbody>
                              </table>
                          </div>

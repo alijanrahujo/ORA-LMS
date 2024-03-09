@@ -41,11 +41,11 @@
                                         @endforeach
                                          @endif
                                     </select> --}}
-                                    <div>
+                                    {{-- <div>
                                         <select id="section" class="form-control">
 
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>

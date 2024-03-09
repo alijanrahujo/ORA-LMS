@@ -4,10 +4,8 @@
 
     <div class="content-page">
         <div class="content">
-
             <!-- Start Content-->
             <div class="container-fluid">
-
                 <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
@@ -20,6 +18,8 @@
                             </div>
                             <h4 class="page-title">Marks details</h4>
                         </div>
+
+
                     </div>
                 </div>
                 <!-- end page title -->
@@ -48,79 +48,70 @@
                     </div>
                     <div class="col-1">
                     </div>
-                    <div class="col-6">
-                        <div class="card-box table-responsive">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <strong>Name:</strong>
-                                    {{ $mark->student_name }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>Father Name:</strong>
-                                    {{ $mark->father_name }}
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <strong>Mother Name:</strong>
-                                    {{ $mark->mother_name }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>Date of Birth:</strong>
-                                    {{ $mark->dob }}
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <strong>Gender:</strong>
-                                    {{ $mark->gender ? 'Male' : 'Female' }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>phone:</strong>
-                                    {{ $mark->phone }}
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <strong>Mobile:</strong>
-                                    {{ $mark->mobile }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>Date:</strong>
-                                    {{ $mark->date }}
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <strong>Roll Number:</strong>
-                                    {{ $mark->roll_number }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>Registration Number:</strong>
-                                    {{ $mark->reg_number }}
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <strong>Class</strong>
-                                    {{ $mark->SchoolClass->name }}
-                                </div>
-                                <div class="col-lg-6">
-                                    <strong>Section:</strong>
-                                    {{ $mark->section_id }}
-                                </div>
-                            </div>
+
+                    <div class="col-8">
+                        <div class="card-box table-responsive table table-bordered ">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th colspan="2" style="background-color: #d4cecf;">Obt-Marks</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="border" style="text-align:left; background-color: rgb(240, 232, 232);"
+                                            colspan="6">Final Term</td>
+                                    </tr>
+                                    <tr class="border-4 border-warning">
+                                        <td class='border pt-5' rowspan="2">Subject</td>
+                                        <td class="border" colspan="3">Exam</td>
+                                        <td class="border" colspan="3">Total</td>
+                                    </tr>
+                                    <tr class="border-4 border-warning">
+                                        <td class="border">Max Mark</td>
+                                        <td class="border">Min Mark</td>
+                                        <td class="border">Obt Mark</td>
+                                        <td class="border">Percentage</td>
+                                        <td class="border">Remarks</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $totalMarks = 0;
+                                        $totalObtMarks = 0;
+                                    @endphp
+                                    @foreach ($student->marks as $mark)
+                                        <tr class="border-4 border-warning">
+                                            <td class="border">{{ $mark->Subject->subject }}</td>
+                                            <td class="border">{{ $mark->Subject->marks }}</td>
+                                            <td class="border">{{ $mark->marks }}</td>
+                                            <td class="border">{{ $mark->obt }}</td>
+                                            <td class="border">{{ ($mark->obt / $mark->subject->marks) * 100 }}%</td>
+                                            <td class="border"></td>
+                                        </tr>
+                                        @php
+                                            $totalMarks += $mark->Subject->marks;
+                                            $totalObtMarks += $mark->obt;
+                                        @endphp
+                                    @endforeach
+                                    <tr>
+
+                                        <td colspan="3"><strong>Total Marks : </strong>{{ $totalMarks }}</td>
+                                        @if ($totalMarks > 0)
+                                            <td colspan="3"><strong>Obt Marks : </strong>{{ $totalObtMarks }}</td>
+                                        @else
+                                            <td class="border">N/A</td>
+                                        @endif
+                                    </tr>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- end row -->
+        </div>
+        <!-- end row -->
 
-        </div> <!-- end container-fluid -->
-
-    </div> <!-- end content -->
-    </div>
-
+    </div> <!-- end container-fluid -->
 @endsection
 
 @section('style')

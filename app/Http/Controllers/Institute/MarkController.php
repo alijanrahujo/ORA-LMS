@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Institute;
 
+use PDF;
 use App\Models\Exam;
 use App\Models\Mark;
 use App\Models\Section;
@@ -9,18 +10,33 @@ use App\Models\Student;
 use App\Models\Subject;
 use App\Models\SchoolClass;
 use Illuminate\Http\Request;
+use App\Models\Mark_Distribtion;
+use App\Models\AttendanceStudent;
 use Illuminate\Routing\Controller;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\View;
+use Dompdf\Dompdf;
+
+
+
 
 class MarkController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mark = Mark::get();
-        return view('institute.mark.index', compact('mark'));
+        $search = $request['search'] ?? "";
+        if ($search != "") {
+            $mark = Mark::where('student_name', '=', $search)->get();
+        } else {
+            $mark = Mark::all();
+        }
+        // $mark = Mark_Distribtion::get();
+        $data = compact('mark', 'search');
+        // $mark = Mark::get();
+        return view('institute.mark.index')->with($data);
     }
 
     /**
@@ -118,26 +134,34 @@ class MarkController extends Controller
     /**
      * Display the specified resource.
      */
+
     public function show($id)
     {
-        $mark = Mark::find($id);
-        return view('institute.mark.show', compact('mark'));
-    }
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Mark $mark)
-    {
-        //
+        $mark = Mark::with('subject')->find($id);
+        // $subject = $mark->with('subject')->get();
+        $student = Student::find($mark->student_id);
+        //return $student->marks;
+        // Returning the view with data
+        return view('institute.mark.show', compact('mark', 'student'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Mark $mark)
-    {
-        //
-    }
+
+    // public function downloadPdf($id)
+    // {
+    //     $mark = Mark::with('subject')->find($id);
+    //     $student = Student::find($mark->student_id);
+
+
+    //     return view('pdf.mark', compact('mark', 'student'));
+
+    //     // Load the view and pass data to it
+    //     $pdf = PDF::loadView('pdf.mark', compact('mark', 'student'));
+
+    //     // Download the PDF file with a custom name
+    //     return $pdf->download('mark_sheet.pdf');
+    // }
+
+
 
     /**
      * Remove the specified resource from storage.

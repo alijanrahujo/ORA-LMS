@@ -1,17 +1,19 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Exam extends Model
+class AcademicYear extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'exam_name',
-        'date',
-        'note',
+        'year',
+        'year_title',
+        'starting_date',
+        'ending_date',
     ];
-    protected $table = "exam";
+    protected $table = "academic_years";
     public $timestamps = true;
 }

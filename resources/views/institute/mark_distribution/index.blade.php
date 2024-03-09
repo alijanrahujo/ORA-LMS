@@ -1,5 +1,5 @@
  @extends('layouts.institute')
- @section('title', 'Mark')
+ @section('title', 'Mark Distribution')
  @section('content')
 
      <div class="content-page">
@@ -18,20 +18,16 @@
                                      <li class="breadcrumb-item active">Institute</li>
                                  </ol>
                              </div>
-                             <h4 class="page-title">Add Mark</h4>
+                             <h4 class="page-title">Add Mark Distribution</h4>
                          </div>
                      </div>
                  </div>
                  <!-- end page title -->
-                 {{-- <a href="{{ route('institute.mark.create') }}" class="btn btn-success mb-2">
-                     <i class="fa fa-plus"></i> Add Mark
-                 </a> --}}
-
                  <div class="row">
 
                      <div class="col-md-6 ">
-                         <a href="{{ route('institute.mark.create') }}" class="btn btn-success mb-2">
-                             <i class="fa fa-plus"></i> Add Mark
+                         <a href="{{ route('institute.mark_distribution.create') }}" class="btn btn-success mb-2">
+                             <i class="fa fa-plus"></i> Add Mark Distribution
                          </a>
                      </div>
                      <div class="col-md-4">
@@ -43,6 +39,7 @@
                          </form>
                      </div>
                  </div>
+
                  <div class="row">
                      <div class="col-12">
                          <div class="card-box table-responsive">
@@ -52,43 +49,28 @@
                                  <thead>
                                      <tr>
                                          <th>S.N0</th>
-                                         <th>Name</th>
-                                         <th>Mobile</th>
-                                         <th>Roll</th>
-                                         <th>Marks</th>
+                                         <th>Mark Distribution</th>
+                                         <th>Mark Value(%)</th>
                                          <th>Action</th>
                                      </tr>
                                  </thead>
                                  <tbody>
-                                     @foreach ($mark as $mark)
+                                     @foreach ($mark as $marks)
                                          <tr>
                                              <td>{{ $loop->iteration }}</td>
-                                             <td>{{ $mark->Student->name }}</td>
-                                             {{-- <td>{{ $mark->SchoolClass->name }}</td> --}}
-                                             <td>{{ $mark->Student->mobile }}</td>
-                                             <td>{{ $mark->Student->roll_number }}</td>
-                                             <td>{{ $mark->marks }}</td>
-                                             {{-- <td>{{$teacher->status}}</td> <td>{{$teacher->action}}</td> --}}
+                                             <td>{{ $marks->mark_distribution }}</td>
+                                             <td>{{ $marks->mark_value }}</td>
 
+                                             {{-- <td>{{$teacher->status}}</td>
+                                             <td>{{$teacher->action}}</td> --}}
 
                                              <td>
-                                                 <a class="btn btn-success btn-xs"
-                                                     href="{{ route('institute.mark.show', $mark->id) }}">
-                                                     <i class="fas fa-check-square"></i>
+                                                 <a class="btn btn-warning btn-xs"
+                                                     href="{{ route('institute.mark_distribution.edit', $marks->id) }}">
+                                                     <i class="far fa-edit"></i>
                                                  </a>
-
-                                                 {!! Form::open([
-                                                     'method' => 'DELETE',
-                                                     'route' => ['institute.mark.destroy', $mark->id],
-                                                     'style' => 'display:inline',
-                                                 ]) !!}
-                                                 {!! Form::button('<i class="fa fa-trash"></i>', [
-                                                     'type' => 'submit',
-                                                     'class' => 'btn btn-danger btn-xs',
-                                                 ]) !!}
-                                                 {!! Form::close() !!}
-
                                              </td>
+
                                          </tr>
                                      @endforeach
                                  </tbody>
@@ -117,7 +99,7 @@
      <!-- Required datatable js -->
      <script src="assets/libs/datatables/jquery.dataTables.min.js"></script>
      <script src="assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
-     <!-- Buttons examples -->
+     <!-- Buttons mark_distributionples -->
      <script src="assets/libs/datatables/dataTables.buttons.min.js"></script>
      <script src="assets/libs/datatables/buttons.bootstrap4.min.js"></script>
      <script src="assets/libs/jszip/jszip.min.js"></script>
@@ -127,7 +109,7 @@
      <script src="assets/libs/datatables/buttons.print.min.js"></script>
      <script src="assets/libs/datatables/buttons.colVis.js"></script>
 
-     <!-- Responsive examples -->
+     <!-- Responsive mark_distributionples -->
      <script src="assets/libs/datatables/dataTables.responsive.min.js"></script>
      <script src="assets/libs/datatables/responsive.bootstrap4.min.js"></script>
 

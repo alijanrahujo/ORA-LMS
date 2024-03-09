@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('level')->nullable();
             $table->string('status')->default(1);
             $table->foreignId('institute_id')->constrained('institutes');
+            $table->foreignId('academic_id')->constrained('academic_id,');
             $table->softDeletes();
             $table->timestamps();
         });
