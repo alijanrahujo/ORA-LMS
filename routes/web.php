@@ -1,40 +1,41 @@
 <?php
 
+use App\Models\Institute;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Institute\DashboardController;
 use App\Http\Controllers\Institute\AuthController as InstituteAuthController;
-use App\Http\Controllers\Institute\DashboardController as InstituteDashboardController;
+use App\Http\Controllers\Institute\ExamController as InstituteExamController;
+use App\Http\Controllers\Institute\MarkController as InstituteMarkController;
+use App\Http\Controllers\Institute\GradeController as InstituteGradeController;
+use App\Http\Controllers\Superadmin\AuthController as SuperadminAuthController;
 use App\Http\Controllers\Institute\FeeTypeController as InstituteFeeTypeController;
-use App\Http\Controllers\Institute\GuardianController as InstituteGuardianController;
 use App\Http\Controllers\Institute\InvoiceController as InstituteInvoiceController;
-use App\Http\Controllers\Institute\SchoolClassController as InstituteSchoolClassController;
 use App\Http\Controllers\Institute\SectionController as InstituteSectionController;
 use App\Http\Controllers\Institute\StudentController as InstituteStudentController;
 use App\Http\Controllers\Institute\SubjectController as InstituteSubjectController;
-use App\Http\Controllers\Institute\SyllabusController as InstituteSyllabusController;
-use App\Http\Controllers\Institute\AssignmentController as InstituteAssignmentController;
 use App\Http\Controllers\Institute\TeacherController as InstituteTeacherController;
-use App\Http\Controllers\Institute\AttendanceTeacherController as InstituteAttendanceTeacherController;
-use App\Http\Controllers\Institute\AttendanceStudentController as InstituteAttendanceStudentController;
-use App\Http\Controllers\Institute\MarkController as InstituteMarkController;
-use App\Http\Controllers\Institute\MarkDistributionController as InstituteMarkDistributionController;
-use App\Http\Controllers\Institute\AcademicYearController as InstituteAcademicYearController;
-use App\Http\Controllers\Institute\ExamController as InstituteExamController;
-use App\Http\Controllers\Institute\Exam_ScheduleController as InstituteExam_ScheduleController;
-use App\Http\Controllers\Institute\Exam_AttendanceController as InstituteExam_AttendanceController;
-use App\Http\Controllers\Institute\GradeController as InstituteGradeController;
 use App\Http\Controllers\Institute\users\RoleController as InstituteRoleController;
 use App\Http\Controllers\Institute\users\UserController as InstituteUserController;
-use App\Http\Controllers\Institute\users\PermissionController as InstitutePermissionController;
-
-use App\Http\Controllers\Superadmin\DashboardController as SuperadminDashboardController;
-use App\Http\Controllers\Superadmin\AuthController as SuperadminAuthController;
-use App\Http\Controllers\Superadmin\InstituteController as SuperadminInstituteController;
+use App\Http\Controllers\Institute\GuardianController as InstituteGuardianController;
+use App\Http\Controllers\Institute\SyllabusController as InstituteSyllabusController;
 use App\Http\Controllers\Superadmin\users\RoleController as SuperadminRoleController;
 use App\Http\Controllers\Superadmin\users\UserController as SuperadminUserController;
-use App\Http\Controllers\Superadmin\users\PermissionController as SuperadminPermissionController;
-use App\Models\Institute;
-
+use App\Http\Controllers\Institute\DashboardController as InstituteDashboardController;
+use App\Http\Controllers\Institute\AssignmentController as InstituteAssignmentController;
 use App\Http\Controllers\Institute\AttendanceController as InstituteAttendanceController;
+use App\Http\Controllers\Superadmin\DashboardController as SuperadminDashboardController;
+use App\Http\Controllers\Superadmin\InstituteController as SuperadminInstituteController;
+
+use App\Http\Controllers\Institute\SchoolClassController as InstituteSchoolClassController;
+use App\Http\Controllers\Institute\AcademicYearController as InstituteAcademicYearController;
+use App\Http\Controllers\Institute\Exam_ScheduleController as InstituteExam_ScheduleController;
+use App\Http\Controllers\Institute\users\PermissionController as InstitutePermissionController;
+use App\Http\Controllers\Superadmin\users\PermissionController as SuperadminPermissionController;
+use App\Http\Controllers\Institute\Exam_AttendanceController as InstituteExam_AttendanceController;
+use App\Http\Controllers\Institute\MarkDistributionController as InstituteMarkDistributionController;
+
+use App\Http\Controllers\Institute\AttendanceStudentController as InstituteAttendanceStudentController;
+use App\Http\Controllers\Institute\AttendanceTeacherController as InstituteAttendanceTeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,7 @@ Route::get('dashboard', function () {
     return redirect('institute/dashboard');
 })->name('dashboard');
 
+Route::get('filter', [DashboardController::class, 'filter']);
 // ============================== Super Admin ==============================
 Route::prefix('superadmin')->name('superadmin.')->group(function () {
     Route::get('/', [SuperadminAuthController::class, 'index'])->name('index')->middleware('guest');
@@ -129,7 +131,7 @@ Route::prefix('institute')->name('institute.')->group(function () {
         //mark
         Route::resource('mark', InstituteMarkController::class);
         Route::post('mark/create', [InstituteMarkController::class, 'create'])->name('mark.create');
-        Route::get('mark/download-pdf', [InstituteMarkController::class, 'download-pdf'])->name('mark.download.pdf');
+
         // Route::get('/institute/mark/show/{id}', 'YourController@show')->name('institute.mark.show');
 
 
@@ -139,6 +141,7 @@ Route::prefix('institute')->name('institute.')->group(function () {
 
         //academic_year
         Route::resource('academic_year', InstituteAcademicYearController::class);
+        Route::post('academic_year_change', [InstituteAcademicYearController::class,'academic_year_change'])->name('academic_year_change');
 
         //exam Attedance
         Route::resource('exam_attendance', InstituteExam_AttendanceController::class);

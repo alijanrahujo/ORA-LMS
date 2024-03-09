@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Institute;
 
 use id;
 use App\Models\Teacher;
+use App\Models\AcademicYear;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('institute.teacher.create');
+
+        $academic_year_id = AcademicYear::pluck('starting_date', 'id');
+        return view('institute.teacher.create', compact('academic_year_id'));
     }
 
     /**
@@ -32,7 +35,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request; 
+        // return $request;
         $teacher = new Teacher;
         $teacher->name = $request->name;
         $teacher->education = $request->education;
@@ -44,6 +47,7 @@ class TeacherController extends Controller
         $teacher->mobile = $request->mobile;
         $teacher->email = $request->email;
         $teacher->status = $request->status;
+        $teacher->academic_year_id = $request->academic_year_id;
         $teacher->institute_id = Auth::user()->id;
         $teacher->user_id = Auth::user()->id;
         $teacher->save();
@@ -59,7 +63,7 @@ class TeacherController extends Controller
         //
 
         $teacher = Teacher::find($id);
-        return view('institute.teacher.show',compact('teacher'));
+        return view('institute.teacher.show', compact('teacher'));
     }
 
     /**

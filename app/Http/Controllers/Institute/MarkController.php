@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Institute;
 
-use Dompdf\Dompdf;
+use PDF;
 use App\Models\Exam;
 use App\Models\Mark;
 use App\Models\Section;
@@ -10,8 +10,15 @@ use App\Models\Student;
 use App\Models\Subject;
 use App\Models\SchoolClass;
 use Illuminate\Http\Request;
+use App\Models\Mark_Distribtion;
+use App\Models\AttendanceStudent;
 use Illuminate\Routing\Controller;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\View;
+use Dompdf\Dompdf;
+
+
+
 
 class MarkController extends Controller
 {
@@ -137,6 +144,23 @@ class MarkController extends Controller
         // Returning the view with data
         return view('institute.mark.show', compact('mark', 'student'));
     }
+
+
+    // public function downloadPdf($id)
+    // {
+    //     $mark = Mark::with('subject')->find($id);
+    //     $student = Student::find($mark->student_id);
+
+
+    //     return view('pdf.mark', compact('mark', 'student'));
+
+    //     // Load the view and pass data to it
+    //     $pdf = PDF::loadView('pdf.mark', compact('mark', 'student'));
+
+    //     // Download the PDF file with a custom name
+    //     return $pdf->download('mark_sheet.pdf');
+    // }
+
 
 
     /**

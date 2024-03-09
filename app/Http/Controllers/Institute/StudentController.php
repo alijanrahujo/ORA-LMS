@@ -6,8 +6,10 @@ use App\Models\Section;
 use App\Models\Student;
 use App\Models\Guardian;
 use App\Models\SchoolClass;
+use App\Models\AcademicYear;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -16,7 +18,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::with('SchoolClass')->get();
+        $academic_year_id = Auth::user()->academic_id;
+        $students = Student::where('academic_year_id',$academic_year_id)->with('SchoolClass')->get();
         return view('institute.student.index', compact('students'));
     }
 
@@ -49,15 +52,15 @@ class StudentController extends Controller
         $classes = SchoolClass::pluck('name', 'id');
         $guards = Guardian::pluck('name', 'id');
         $sections = Section::pluck('name', 'id');
-        return view('institute.student.create', compact('classes', 'guards', 'sections'));
+        return view('institute.student.create', compact('classes', 'guards', 'sections', 'academic_year'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
 
+        $academic_year_id = Auth::user()->academic_id;
         // Instantiate a new Student object
         $student = new Student;
 
@@ -77,6 +80,7 @@ class StudentController extends Controller
         $student->status = $request->status;
         $student->class_id = $request->class_id;
         $student->section_id = $request->section_id;
+        $student->academic_year_id = $academic_year_id;
 
         // Save the Student object to the database
         $student->save();

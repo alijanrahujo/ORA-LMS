@@ -18,123 +18,100 @@
                             </div>
                             <h4 class="page-title">Marks details</h4>
                         </div>
-                        <div class="row border-dark border-2" style="margin-bottom: 10px;">
-                            <div> <!-- Added margin bottom class -->
-                                <button class="btn btn-primary" id="downloadPdf" style="margin-right: 5px">Download PDF</button>
-                            </div>
-                            <div > <!-- Added margin bottom class -->
-                                <button class="btn btn-primary" onclick="print()">Print</button>
-                            </div>
-                        </div>
+
 
                     </div>
-                    <!-- end page title -->
-                    <div class="row">
-                        <div class="col-3 card-box table-responsive">
-                            <img src="{{ asset('assets/images/attached-files/user.png') }}" alt="Profile Picture"
-                                class="img-fluid rounded-circle mx-auto d-block" style="width: 100px; height: 100px;">
-                            <h5 style="text-align: center">{{ $mark->student_name }}</h5>
-                            <p style="text-align: center"> Student</p>
-                            <table class="table table-bordered">
+                </div>
+                <!-- end page title -->
+                <div class="row">
+                    <div class="col-3 card-box table-responsive">
+                        <img src="{{ asset('assets/images/attached-files/user.png') }}" alt="Profile Picture"
+                            class="img-fluid rounded-circle mx-auto d-block" style="width: 100px; height: 100px;">
+                        <h5 style="text-align: center">{{ $mark->student_name }}</h5>
+                        <p style="text-align: center"> Student</p>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>Roll Number:</td>
+                                    <td>{{ $mark->roll }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Class:</td>
+                                    <td>{{ $mark->SchoolClass->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Section:</td>
+                                    <td>{{ $mark->Section->name }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-1">
+                    </div>
+
+                    <div class="col-8">
+                        <div class="card-box table-responsive table table-bordered ">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th colspan="2" style="background-color: #d4cecf;">Obt-Marks</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="border" style="text-align:left; background-color: rgb(240, 232, 232);"
+                                            colspan="6">Final Term</td>
+                                    </tr>
+                                    <tr class="border-4 border-warning">
+                                        <td class='border pt-5' rowspan="2">Subject</td>
+                                        <td class="border" colspan="3">Exam</td>
+                                        <td class="border" colspan="3">Total</td>
+                                    </tr>
+                                    <tr class="border-4 border-warning">
+                                        <td class="border">Max Mark</td>
+                                        <td class="border">Min Mark</td>
+                                        <td class="border">Obt Mark</td>
+                                        <td class="border">Percentage</td>
+                                        <td class="border">Remarks</td>
+                                    </tr>
+                                </thead>
                                 <tbody>
+                                    @php
+                                        $totalMarks = 0;
+                                        $totalObtMarks = 0;
+                                    @endphp
+                                    @foreach ($student->marks as $mark)
+                                        <tr class="border-4 border-warning">
+                                            <td class="border">{{ $mark->Subject->subject }}</td>
+                                            <td class="border">{{ $mark->Subject->marks }}</td>
+                                            <td class="border">{{ $mark->marks }}</td>
+                                            <td class="border">{{ $mark->obt }}</td>
+                                            <td class="border">{{ ($mark->obt / $mark->subject->marks) * 100 }}%</td>
+                                            <td class="border"></td>
+                                        </tr>
+                                        @php
+                                            $totalMarks += $mark->Subject->marks;
+                                            $totalObtMarks += $mark->obt;
+                                        @endphp
+                                    @endforeach
                                     <tr>
-                                        <td>Roll Number:</td>
-                                        <td>{{ $mark->roll }}</td>
+
+                                        <td colspan="3"><strong>Total Marks : </strong>{{ $totalMarks }}</td>
+                                        @if ($totalMarks > 0)
+                                            <td colspan="3"><strong>Obt Marks : </strong>{{ $totalObtMarks }}</td>
+                                        @else
+                                            <td class="border">N/A</td>
+                                        @endif
                                     </tr>
-                                    <tr>
-                                        <td>Class:</td>
-                                        <td>{{ $mark->SchoolClass->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Section:</td>
-                                        <td>{{ $mark->Section->name }}</td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-1">
-                        </div>
-
-                        <div class="col-8">
-                            <div class="card-box table-responsive table table-bordered ">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th colspan="2" style="background-color: #d4cecf;">Obt-Marks</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="border"
-                                                style="text-align:left; background-color: rgb(240, 232, 232);"
-                                                colspan="6">Final Term</td>
-                                        </tr>
-                                        <tr class="border-4 border-warning">
-                                            <td class='border pt-5' rowspan="2">Subject</td>
-                                            <td class="border" colspan="3">Exam</td>
-                                            <td class="border" colspan="3">Total</td>
-                                        </tr>
-                                        <tr class="border-4 border-warning">
-                                            <td class="border">Max Mark</td>
-                                            <td class="border">Min Mark</td>
-                                            <td class="border">Obt Mark</td>
-                                            <td class="border">Percentage</td>
-                                            <td class="border">Remarks</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $totalMarks = 0;
-                                            $totalObtMarks = 0;
-                                        @endphp
-                                        @foreach ($student->marks as $mark)
-                                            <tr class="border-4 border-warning">
-                                                <td class="border">{{ $mark->Subject->subject }}</td>
-                                                <td class="border">{{ $mark->Subject->marks }}</td>
-                                                <td class="border">{{ $mark->marks }}</td>
-                                                <td class="border">{{ $mark->obt }}</td>
-                                                <td class="border">{{ ($mark->obt / $mark->subject->marks) * 100 }}%</td>
-                                                <td class="border"></td>
-                                            </tr>
-                                            @php
-                                                $totalMarks += $mark->Subject->marks;
-                                                $totalObtMarks += $mark->obt;
-                                            @endphp
-                                        @endforeach
-                                        <tr>
-
-                                            <td colspan="3"><strong>Total Marks : </strong>{{ $totalMarks }}</td>
-                                            @if ($totalMarks > 0)
-                                                <td colspan="3"><strong>Obt Marks : </strong>{{ $totalObtMarks }}</td>
-                                            @else
-                                                <td class="border">N/A</td>
-                                            @endif
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-
-                        {{--
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <span
-                                    style="text-align: left; background-color:rgb(255, 255, 255); boder-top:2px color-red;">Obt-Marks</span>
-                            </div>
-                        </div>
-                        <div class="row" class="boder-4 boder-waraning">
-                            <span style="text-align: left; background-color:rgb(255, 255, 255);">Final Term</span>
-                        </div> --}}
                     </div>
                 </div>
             </div>
-            <!-- end row -->
+        </div>
+        <!-- end row -->
 
-        </div> <!-- end container-fluid -->
-
-    </div> <!-- end content -->
-    </div>
-
+    </div> <!-- end container-fluid -->
 @endsection
 
 @section('style')

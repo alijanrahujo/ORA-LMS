@@ -30,6 +30,7 @@ class Student extends Model
         'guardian_id',
         'class_id',
         'section_id',
+        'academic_id'
     ];
     // public function Section()
     // {
@@ -65,5 +66,10 @@ class Student extends Model
     public function Marks()
     {
         return $this->hasMany(Mark::class, 'student_id', 'id');
+    }
+
+    public function AcademicYear()
+    {
+      return $this->hasOne(AcademicYear::class, 'id', 'academic_year_id', 'id');
     }
 }

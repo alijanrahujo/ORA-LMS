@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Institute;
 
+use App\Models\User;
+use App\Models\AcademicYear;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\AcademicYear;
+use Illuminate\Support\Facades\Auth;
 
 class AcademicYearController extends Controller
 {
@@ -74,5 +76,16 @@ class AcademicYearController extends Controller
         //return $exam;
         $academic->delete();
         return redirect('institute/academic_year')->with('success', 'Academic Year Successfully Deleted');
+    }
+
+    public function academic_year_change(Request $request)
+    {
+       // return $request;
+       $user = User::find(Auth::user()->id);
+       $user->update([
+            'academic_id'=>$request->academic_id
+       ]);
+       
+       return redirect()->back();
     }
 }

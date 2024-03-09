@@ -29,7 +29,7 @@
                             {!! Form::model($academic, [
                                 'enctype' => 'multipart/form-data',
                                 'method' => 'PATCH',
-                                'route' => ['institute.academic_year.update', $academic_year->id],
+                                'route' => ['institute.academic_year.update', $academic->id],
                             ]) !!}
 
                             @csrf

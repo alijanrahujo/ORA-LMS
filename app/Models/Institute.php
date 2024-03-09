@@ -23,11 +23,16 @@ class Institute extends Model
         'phone2',
         'sector',
         'type',
-        'status'
+        'status',
+        'academic_id'
     ];
 
+    public function AcademicYear()
+    {
+        return $this->hasOne(AcademicYear::class, 'id', 'academic_year_id');
+    }
     public function user()
     {
-        return $this->hasOne(User::class,'id','user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }
