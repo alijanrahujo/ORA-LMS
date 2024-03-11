@@ -77,15 +77,17 @@ class AcademicYearController extends Controller
         $academic->delete();
         return redirect('institute/academic_year')->with('success', 'Academic Year Successfully Deleted');
     }
-
     public function academic_year_change(Request $request)
     {
-       // return $request;
-       $user = User::find(Auth::user()->id);
-       $user->update([
-            'academic_id'=>$request->academic_id
-       ]);
-       
-       return redirect()->back();
+        // Get the authenticated user
+        $user = User::find(Auth::user()->id); 
+        $user->update([
+            'academic_id' => $request->academic_id,
+            'updated_at' => now()->toDateTimeString() // Format current datetime as string
+        ]);
+
+        // Redirect back
+        return redirect()->back();
     }
+
 }

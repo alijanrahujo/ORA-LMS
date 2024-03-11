@@ -16,7 +16,11 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::get();
+        $academic_year_id = Auth::user()->academic_id;
+        // return $academic_year_id;
+        //$teachers = Teacher::where('academic_year_id', $academic_year_id)->with('Teacher')->get();
+        $teachers = Teacher::where('academic_year_id', $academic_year_id)->with('AcademicYear')->get();
+        // return $teachers;
         return view("institute.teacher.index", compact('teachers'));
     }
 
@@ -35,6 +39,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
+        $academic_year_id = Auth::user()->academic_id;
         // return $request;
         $teacher = new Teacher;
         $teacher->name = $request->name;
@@ -47,7 +52,7 @@ class TeacherController extends Controller
         $teacher->mobile = $request->mobile;
         $teacher->email = $request->email;
         $teacher->status = $request->status;
-        $teacher->academic_year_id = $request->academic_year_id;
+        $teacher->academic_year_id = $academic_year_id;
         $teacher->institute_id = Auth::user()->id;
         $teacher->user_id = Auth::user()->id;
         $teacher->save();

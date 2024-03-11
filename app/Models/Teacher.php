@@ -25,4 +25,9 @@ class Teacher extends Model
         'user_id',
         'academic_year_id'
     ];
+
+    public function AcademicYear()
+    {
+        return $this->hasOne(AcademicYear::class, 'id', 'academic_year_id', 'id');
+    }
 }

@@ -15,13 +15,16 @@
     <link href="{{ asset('assets/libs/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- App css -->
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
-    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-stylesheet" />
-    <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet" type="text/css" id="app-stylesheet" />
-    <link href="{{asset('assets/libs/jquery-toast/jquery.toast.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"
+        id="bootstrap-stylesheet" />
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
+    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
+    <link href="{{ asset('assets/libs/jquery-toast/jquery.toast.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Sweet Alert -->
     <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -124,7 +127,7 @@
                         <div class="dropdown-header noti-title" style="padding: 20px; border-bottom: 1px solid #ddd;">
                             <h5 class="text-overflow m-0 align-self-center"><span class="float-right">You have two
                                     years</span></h5>
-                            <form method="post" action="{{ route('institute.academic_year_change') }}">
+                            <form method="POST" action="{{ route('institute.academic_year_change') }}">
                                 @csrf
                                 <div class="container">
                                     <div class="row mt-4">

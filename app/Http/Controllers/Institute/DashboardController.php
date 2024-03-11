@@ -30,18 +30,18 @@ class DashboardController extends Controller
     //     return view('dashboard', compact('student'));
     // }
 
-    public function filter(Request $request)
-    {
+    // public function filter(Request $request)
+    // {
 
-        // $starting_date = $request->starting_date;
-        // $ending_date   = $request->ending_date;
+    //     // $starting_date = $request->starting_date;
+    //     // $ending_date   = $request->ending_date;
 
-        // // Assuming 'academic_year_id' is a date field, use whereBetween for filtering within the date range
-        // $students = Student::with(['SchoolClass', 'Section'])
-        //     ->whereBetween('academic_year_id', [$starting_date, $ending_date])
-        //     ->get();
-        // dd($students);
+    //     // // Assuming 'academic_year_id' is a date field, use whereBetween for filtering within the date range
+    //     // $students = Student::with(['SchoolClass', 'Section'])
+    //     //     ->whereBetween('academic_year_id', [$starting_date, $ending_date])
+    //     //     ->get();
+    //     // dd($students);
 
-        // return view('institute.dashboard');
-    }
+    //     // return view('institute.dashboard');
+    // }
 }

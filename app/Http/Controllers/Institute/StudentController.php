@@ -52,7 +52,8 @@ class StudentController extends Controller
         $classes = SchoolClass::pluck('name', 'id');
         $guards = Guardian::pluck('name', 'id');
         $sections = Section::pluck('name', 'id');
-        return view('institute.student.create', compact('classes', 'guards', 'sections', 'academic_year'));
+        $academic_year_id = Section::pluck('year_title', 'id');
+        return view('institute.student.create', compact('classes', 'guards', 'sections', 'academic_year_id' ));
     }
     /**
      * Store a newly created resource in storage.
