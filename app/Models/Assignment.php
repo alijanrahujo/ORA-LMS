@@ -18,9 +18,19 @@ class Assignment extends Model
         'file',
 
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+
+            $model->institute_id = Auth()->id();
+        });
+    }
     protected $table = "assignment";
 
-    public function SchoolClass() //this function is use the for 
+    public function SchoolClass() //this function is use the for
     {
         return $this->hasOne(SchoolClass::class, 'id', 'class_id');
     }

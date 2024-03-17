@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained('students');
             $table->foreignId('subject_id')->constrained('subjects');
             $table->foreignId('section_id')->constrained('sections');
+            $table->foreignId('institute_id')->constrained('institutes');
             $table->string('student_name');
             $table->string('roll');
             $table->string('mobile');

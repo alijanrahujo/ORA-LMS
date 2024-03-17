@@ -3,16 +3,25 @@
 namespace App\Http\Controllers\Institute;
 
 use App\Models\Exam;
+use App\Models\AcademicYear;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ExamController extends Controller
 {
+
     public function index()
     {
-        $exams = Exam::get();
+        $institute_id = auth()->user()->institute_id;
+        $academic_year_id = Auth::user()->academic_id;
+        $exams = Exam::where('academic_year_id', $academic_year_id)
+            ->where('institute_id', $institute_id)
+            ->with('AcademicYear')
+            ->get();
         return view('institute.exam.index', compact('exams'));
     }
+
 
     public function create()
     {
@@ -22,11 +31,13 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
+        $academic_year_id = Auth::user()->academic_id;
         //return $request;
         $exam = new Exam;
         $exam->exam_name = $request->exam_name;
         $exam->date   = $request->date;
         $exam->note  = $request->note;
+        $exam->academic_year_id = $academic_year_id;
         $exam->save();
 
         return redirect('institute/exam')->with('success', 'Exam Successfully Registered');

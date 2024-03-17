@@ -19,9 +19,16 @@ class StudentController extends Controller
     public function index()
     {
         $academic_year_id = Auth::user()->academic_id;
-        $students = Student::where('academic_year_id',$academic_year_id)->with('SchoolClass')->get();
+        $institute_id = auth()->user()->institute_id;
+
+        $students = Student::where('academic_year_id', $academic_year_id)
+            ->where('institute_id', $institute_id)
+            ->with('SchoolClass')
+            ->get();
+
         return view('institute.student.index', compact('students'));
     }
+
 
 
 
@@ -52,8 +59,8 @@ class StudentController extends Controller
         $classes = SchoolClass::pluck('name', 'id');
         $guards = Guardian::pluck('name', 'id');
         $sections = Section::pluck('name', 'id');
-        $academic_year_id = Section::pluck('year_title', 'id');
-        return view('institute.student.create', compact('classes', 'guards', 'sections', 'academic_year_id' ));
+        // $academic_year_id = Section::pluck('year_title', 'id');
+        return view('institute.student.create', compact('classes', 'guards', 'sections' ));
     }
     /**
      * Store a newly created resource in storage.

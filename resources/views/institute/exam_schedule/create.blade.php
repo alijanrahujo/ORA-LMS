@@ -39,8 +39,8 @@
                                  <div class="col-md-6">
                                      <div class="form-group">
                                          <label>Exam Name<span class="text-danger">*</span></label>
-                                         {!! Form::text('exam_name', null, [
-                                             'placeholder' => 'Exam',
+                                         {!! Form::select('exam_id', $exams, null, [
+                                            //  'placeholder' => 'Exam',
                                              'class' => 'form-control',
                                              'parsley-trigger' => 'change',
                                              'required' => 'required',

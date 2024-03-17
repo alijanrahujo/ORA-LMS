@@ -17,9 +17,10 @@ class TeacherController extends Controller
     public function index()
     {
         $academic_year_id = Auth::user()->academic_id;
+        $institute_id     = auth()->user()->institute_id;
         // return $academic_year_id;
         //$teachers = Teacher::where('academic_year_id', $academic_year_id)->with('Teacher')->get();
-        $teachers = Teacher::where('academic_year_id', $academic_year_id)->with('AcademicYear')->get();
+        $teachers = Teacher::where('academic_year_id', $academic_year_id)->where('institute_id', $institute_id)->with('AcademicYear')->get();
         // return $teachers;
         return view("institute.teacher.index", compact('teachers'));
     }

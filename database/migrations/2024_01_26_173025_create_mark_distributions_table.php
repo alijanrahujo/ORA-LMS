@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('mark_distribution');
             $table->integer('mark_value');
+            $table->foreignId('institute_id')->constrained('institutes');
             $table->timestamps();
         });
     }

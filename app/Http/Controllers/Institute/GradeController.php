@@ -13,7 +13,8 @@ class GradeController extends Controller
      */
     public function index()
     {
-        $grades = Grade::get();
+        $institute_id = auth()->user()->institute_id;
+        $grades = Grade::where('institute_id', $institute_id)->get();
         return view('institute.grade.index', compact('grades'));
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->double('mark_from');
             $table->double('mark_to');
             $table->string('note');
+            $table->foreignId('institute_id')->constrained('institutes');
             $table->timestamps();
         });
     }

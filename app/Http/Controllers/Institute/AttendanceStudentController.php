@@ -20,7 +20,8 @@ class AttendanceStudentController extends Controller
     public function index()
     {
         //    return 'HEllo';
-        $attendance_student = AttendanceStudent::get();
+        $institute_id = auth()->user()->institute_id;
+        $attendance_student = AttendanceStudent::where('institute_id', $institute_id)->get();
         return view('institute.attendancestudent.index', compact('attendance_student'));
     }
 

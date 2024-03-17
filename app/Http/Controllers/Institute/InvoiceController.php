@@ -18,8 +18,11 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoice = Invoice::with('SchoolClass', 'Section', 'FeeType', 'Student')->get();
-        return view("institute.invoices.index", compact('invoice'));
+        $institute_id = auth()->user()->institute_id;
+        $invoices = Invoice::where('institute_id', $institute_id)
+            ->with('SchoolClass', 'Section', 'FeeType', 'Student')
+            ->get();
+        return view("institute.invoices.index", compact('invoices'));
     }
 
     /**
@@ -27,6 +30,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
+
         // $invoice = Invoice::get();
         $classes = SchoolClass::pluck('name', 'id');
         $sections = Section::pluck('name', 'id');
@@ -40,7 +44,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
+        // return $request;
         $invoice = new Invoice;
         $invoice->date      = $request->date;
         $invoice->amount    = $request->amount;
@@ -54,7 +58,7 @@ class InvoiceController extends Controller
         $invoice->institute_id = Auth::user()->id;
         $invoice->save();
 
-        return redirect('institute/invoice')->with('success', 'Invoice Successfully Registered');
+        return redirect('institute/invoice' )->with('success', 'Invoice Successfully Registered');
     }
 
     /**
@@ -62,6 +66,7 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
+        //return 'id';
         $invoice = Invoice::find($id);
         return view('institute.invoices.show', compact('invoice'));
     }

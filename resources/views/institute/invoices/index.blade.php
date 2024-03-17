@@ -47,7 +47,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($invoice as $invoice)
+                                    @foreach ($invoices as $invoice)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $invoice->date }}</td>

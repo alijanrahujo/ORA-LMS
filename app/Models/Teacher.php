@@ -10,7 +10,7 @@ class Teacher extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable=[
+    protected $fillable = [
         'name',
         'education',
         'gender',
@@ -25,6 +25,17 @@ class Teacher extends Model
         'user_id',
         'academic_year_id'
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+            $model->user_id = Auth()->id();
+            $model->institute_id = Auth()->id();
+            $model->academic_year_id = Auth()->user()->academic_id;
+        });
+    }
 
     public function AcademicYear()
     {

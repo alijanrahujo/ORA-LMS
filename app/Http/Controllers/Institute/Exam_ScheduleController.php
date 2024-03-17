@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Institute;
 
+use App\Models\Exam;
 use App\Models\Section;
 use App\Models\Subject;
 use App\Models\SchoolClass;
@@ -12,18 +13,19 @@ use App\Http\Controllers\Controller;
 class Exam_ScheduleController extends Controller
 {
     public function index()
-    {
-        $exam_schedule = ExamSchedule::get();
+    {   $institute_id = auth()->user()->institute_id;
+        $exam_schedule = ExamSchedule::where('institute_id', $institute_id)->get();
         return view('institute.exam_schedule.index', compact('exam_schedule'));
     }
 
     public function create()
     {
         $exam_schedule = ExamSchedule::get();
-        $classes = SchoolClass::pluck('name', 'id');
+        $classes  = SchoolClass::pluck('name', 'id');
         $subjects = Subject::pluck('subject', 'id');
         $sections = Section::pluck('name', 'id');
-        return view('institute.exam_schedule.create', compact('classes', 'subjects', 'sections'));
+        $exams    = Exam::pluck('exam_name', 'id');
+        return view('institute.exam_schedule.create', compact('classes', 'subjects', 'sections', 'exams'));
     }
 
     public function store(Request $request)

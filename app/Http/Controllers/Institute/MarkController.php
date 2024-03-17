@@ -28,16 +28,18 @@ class MarkController extends Controller
     public function index(Request $request)
     {
         $search = $request['search'] ?? "";
+        $institute_id = auth()->user()->institute_id; // Added line
         if ($search != "") {
-            $mark = Mark::where('student_name', '=', $search)->get();
+            $mark = Mark::where('student_name', '=', $search)
+                ->where('institute_id', $institute_id)
+                ->get();
         } else {
-            $mark = Mark::all();
+            $mark = Mark::where('institute_id', $institute_id)->get();
         }
-        // $mark = Mark_Distribtion::get();
         $data = compact('mark', 'search');
-        // $mark = Mark::get();
         return view('institute.mark.index')->with($data);
     }
+
 
     /**
      * Show the form for creating a new resource.

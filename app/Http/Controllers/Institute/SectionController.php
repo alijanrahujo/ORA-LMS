@@ -16,7 +16,8 @@ class SectionController extends Controller
      */
     public function index()
     {
-        $sections = Section::get();
+        $institute_id = auth()->user()->institute_id;
+        $sections = Section::where('institute_id', $institute_id)->get();
         return view('institute.section.index',compact('sections'));
     }
 
@@ -53,8 +54,8 @@ class SectionController extends Controller
      */
     public function show(Section $section)
     {
-       
-       
+
+
     }
 
     /**
@@ -72,7 +73,7 @@ class SectionController extends Controller
      */
     public function update(Request $request, Section $section)
     {
-        
+
     }
 
     /**

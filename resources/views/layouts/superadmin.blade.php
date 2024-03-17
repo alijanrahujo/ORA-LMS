@@ -143,7 +143,6 @@
 
                     </div>
                 </li>
-                <li>This is a</li>
 
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"

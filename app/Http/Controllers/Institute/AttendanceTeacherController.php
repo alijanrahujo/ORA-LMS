@@ -16,7 +16,8 @@ class AttendanceTeacherController extends Controller
     {
         //return 'hello';
         //  $attendanceteacher = AttendanceTeacher::get();
-        $attendanceteacher = AttendanceTeacher::get();
+        $institute_id = auth()->user()->institute_id;
+        $attendanceteacher = AttendanceTeacher::where('institute_id', $institute_id)->get();
         return view('institute.attendanceteacher.index', compact('attendanceteacher'));
     }
 

@@ -12,9 +12,19 @@ class Grade extends Model
         'grade_name',
         'grade_point',
         'mark_from',
-        'mark_to', 
+        'mark_to',
         'note',
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+
+            $model->institute_id = Auth()->id();
+        });
+    }
     protected $table = "grade";
     public $timestamps = true;
 }

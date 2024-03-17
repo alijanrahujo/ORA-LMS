@@ -15,5 +15,15 @@ class SchoolClass extends Model
         'status',
         'institute_id'
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+
+            $model->institute_id = Auth()->id();
+        });
+    }
     use SoftDeletes;
 }

@@ -16,10 +16,11 @@ class SchoolClassController extends Controller
      */
     public function index()
     {
-        $classes = SchoolClass::get();
+        $institute_id = auth()->user()->institute_id;
+        $classes = SchoolClass::where('institute_id', $institute_id)->get();
         return View('institute.class.index',compact('classes'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -37,7 +38,7 @@ class SchoolClassController extends Controller
         $class = new SchoolClass;
         $class->name= $request->class_name;
         $class->level =$request->class_level;
-        $class->status = $request->class_status; 
+        $class->status = $request->class_status;
         $class->institute_id = Auth::user()->id;
 
         $class->save();
@@ -72,7 +73,7 @@ class SchoolClassController extends Controller
         $class = SchoolClass::find($id);
         $class->name= $request->name;
         $class->level =$request->level;
-        $class->status = $request->status; 
+        $class->status = $request->status;
         $class->update();
         return redirect('institute/class')->with('Success','Class Successfully Updated');
     }

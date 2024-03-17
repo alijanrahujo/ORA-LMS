@@ -33,6 +33,16 @@ class User extends Authenticatable
         'password',
         'academic_id'
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+
+            $model->institute_id = Auth()->id();
+        });
+    }
     public function AcademicYear()
     {
         return $this->hasOne(AcademicYear::class, 'id', 'academic_id');

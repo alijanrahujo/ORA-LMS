@@ -11,17 +11,20 @@ class MarkDistributionController extends Controller
 {
     //Display  a listing of the resource.
 
-    public function index( Request $request)
+    public function index(Request $request)
     {
         $search = $request['search'] ?? "";
+        $institute_id = auth()->user()->institute_id;
+
         if ($search != "") {
-            $mark = Mark_Distribtion::where('mark_distribution', '=', $search)->get();
+            $mark = Mark_Distribtion::where('mark_distribution', '=', $search)
+                ->where('institute_id', $institute_id)
+                ->get();
+        } else {
+            $mark = Mark_Distribtion::where('institute_id', $institute_id)->get();
         }
-        else{
-            $mark = Mark_Distribtion::all();
-        }
-       // $mark = Mark_Distribtion::get();
-        $data = compact('mark','search');
+
+        $data = compact('mark', 'search');
         return view('institute.mark_distribution.index')->with($data);
     }
 
@@ -65,6 +68,4 @@ class MarkDistributionController extends Controller
         $mark->update();
         return redirect('institute/mark_distribution')->with('success', 'Mark Distribution Successfully Updated');
     }
-
-
 }

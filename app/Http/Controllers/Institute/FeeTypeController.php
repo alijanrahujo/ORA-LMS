@@ -15,7 +15,8 @@ class FeeTypeController extends Controller
      */
     public function index()
     {
-        $feetypes = FeeType::get();
+        $institute_id = auth()->user()->institute_id;
+        $feetypes = FeeType::where('institute_id', $institute_id)->get();
         return view("institute.fee.index", compact('feetypes'));
     }
 

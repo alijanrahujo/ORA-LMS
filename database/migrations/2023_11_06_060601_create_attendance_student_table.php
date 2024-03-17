@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('roll');
             $table->string('email');
             $table->date('date');
+            $table->foreignId('institute_id')->constrained('institutes');
             $table->string('status')->default(1);
             $table->timestamps();
         });

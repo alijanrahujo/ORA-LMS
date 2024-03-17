@@ -19,6 +19,16 @@ class Subject extends Model
         'institute_id',
         'marks'
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+
+            $model->institute_id = Auth()->id();
+        });
+    }
     public function Teacher()
     {
         return $this->hasOne(Teacher::class, 'id', 'teacher_id');

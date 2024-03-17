@@ -19,7 +19,8 @@ class Exam_AttendanceController extends Controller
      */
     public function index()
     {
-        $exam_attendance = Exam_Attendance::get();
+        $institute_id = auth()->user()->institute_id;
+        $exam_attendance = Exam_Attendance::where('institute_id', $institute_id)->get();
         return view('institute.exam_attendance.index', compact('exam_attendance'));
     }
 

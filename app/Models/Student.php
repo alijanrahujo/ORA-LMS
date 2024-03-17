@@ -47,6 +47,7 @@ class Student extends Model
         static::creating(function ($model) {
             $model->user_id = Auth()->id();
             $model->institute_id = Auth()->id();
+            $model->academic_year_id = Auth()->user()->academic_id;
         });
     }
     public function Section()
@@ -70,6 +71,6 @@ class Student extends Model
 
     public function AcademicYear()
     {
-      return $this->hasOne(AcademicYear::class, 'id', 'academic_year_id', 'id');
+        return $this->hasOne(AcademicYear::class, 'id', 'academic_year_id', 'id');
     }
 }

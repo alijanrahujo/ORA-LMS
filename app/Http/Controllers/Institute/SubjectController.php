@@ -16,8 +16,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-
-        $subjects = Subject::get();
+        $institute_id = auth()->user()->institute_id;
+        $subjects = Subject::where('institute_id', $institute_id)->get();
         return view('institute.subject.index', compact('subjects'));
     }
 

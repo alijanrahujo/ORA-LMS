@@ -211,7 +211,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Academic Year<span class="text-danger">*</span></label>
@@ -236,7 +236,7 @@
                                         ]) !!}
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group text-right mb-0">
                                 <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">

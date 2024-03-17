@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('class_id')->constrained('school_classes');
             $table->foreignId('section_id')->constrained('sections');
             $table->foreignId("subject_id")->constrained('subjects');
+            $table->foreignId('institute_id')->constrained('institutes');
             $table->string('file');
             $table->softDeletes();
             $table->timestamps();

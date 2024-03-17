@@ -16,7 +16,8 @@ class AcademicYearController extends Controller
     public function index()
     {
         //return 'hello';
-        $academic = AcademicYear::get();
+        $institue_id = auth()->user()->institute_id;
+        $academic = AcademicYear::where('institute_id', $institue_id)->get();
         return view('institute.academic_year.index', compact('academic'));
     }
 
@@ -80,7 +81,7 @@ class AcademicYearController extends Controller
     public function academic_year_change(Request $request)
     {
         // Get the authenticated user
-        $user = User::find(Auth::user()->id); 
+        $user = User::find(Auth::user()->id);
         $user->update([
             'academic_id' => $request->academic_id,
             'updated_at' => now()->toDateTimeString() // Format current datetime as string

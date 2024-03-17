@@ -18,9 +18,23 @@ class ExamSchedule extends Model
         'time_to',
         'room',
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+
+            $model->institute_id = Auth()->id();
+        });
+    }
     protected $table = "exam_schedule";
     public $timestamps = true;
 
+    public function Exam()
+    {
+        return $this->haasaOne(Exam::class, 'id', 'exam_id');
+    }
     public function SchoolClass()
     {
         return $this->hasOne(SchoolClass::class, 'id', 'class_id');

@@ -15,7 +15,8 @@ class SyllabusController extends Controller
     public function index()
     {
         // return "working";
-        $syllabus = Syllabus::get();
+        $institute_id = auth()->user()->institute_id;
+        $syllabus = Syllabus::where('institute_id', $institute_id)->get();
         return view('institute.syllabus.index', compact('syllabus'));
     }
 

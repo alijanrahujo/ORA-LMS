@@ -19,6 +19,16 @@ class AttendanceTeacher extends Model
         'date',
         'status',
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+
+            $model->institute_id = Auth()->id();
+        });
+    }
 
     protected $table = "attendanceteacher";
     public $timestamps = true;

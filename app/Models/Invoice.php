@@ -21,6 +21,16 @@ class Invoice extends Model
         'fee_type_id',
         'institue_id',
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+
+            $model->institute_id = Auth()->id();
+        });
+    }
 
     public function SchoolClass()
     {

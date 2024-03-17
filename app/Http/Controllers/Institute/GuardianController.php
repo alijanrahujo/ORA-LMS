@@ -14,7 +14,8 @@ class GuardianController extends Controller
      */
     public function index()
     {
-        $guardians = Guardian::get();
+        $institute_id = auth()->user()->institute_id;
+        $guardians = Guardian::where('institute_id', $institute_id)->get();
         return view('institute.guardian.index', compact('guardians'));
     }
 
@@ -76,7 +77,7 @@ class GuardianController extends Controller
         $guardian->status = $request->status;
         $guardian->update();
 
-        return redirect('institute/guardian')->with('success','Guardian Successfully Updated');
+        return redirect('institute/guardian')->with('success', 'Guardian Successfully Updated');
     }
 
     /**

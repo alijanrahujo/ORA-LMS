@@ -17,12 +17,13 @@ return new class extends Migration
             $table->string('year_title');
             $table->date('starting_date');
             $table->date('ending_date');
+            $table->foreignId('institute_id')->constrained('institutes');
             $table->timestamps();
         });
     }
 
 
-    
+
 
     /**
      * Reverse the migrations.

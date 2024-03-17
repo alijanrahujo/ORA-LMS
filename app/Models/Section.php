@@ -22,12 +22,12 @@ class Section extends Model
 
     public static function boot() {
         parent::boot();
-    
-        //while creating/inserting item into db  
+
+        //while creating/inserting item into db
         static::creating(function ($model) {
             $model->institute_id = Auth()->id();
         });
-    
-        
+
+
     }
 }

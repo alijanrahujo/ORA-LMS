@@ -20,6 +20,17 @@ class AttendanceStudent extends Model
         'status',
 
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($model) {
+
+            $model->institute_id = Auth()->id();
+        });
+    }
+
     protected $table = "attendance_student";
     public $timestamps = true;
 
