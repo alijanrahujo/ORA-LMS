@@ -326,6 +326,12 @@
                             </a>
                         </li>
 
+                         <li>
+                            <a href="{{ route('institute.user.index') }}">
+                                <i class="fe-airplay"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
 
                         <li>
                             <a href="javascript: void(0);">

@@ -66,10 +66,12 @@
                         </a>
                     </div>
                     <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center">
-                        <div><img src="{{ asset('assets/image/team.png') }}" alt="user Pic"></div>
-                        <div class="card-body ">
-                            <h5 class="card-title text-center">User</h5>
-                        </div>
+                        <a href="{{ route('institute.user.index') }}">
+                            <div><img src="{{ asset('assets/image/team.png') }}" alt="user Pic"></div>
+                            <div class="card-body ">
+                                <h5 class="card-title text-center">User</h5>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-12 col-sm-12 col-md-2 mx-2 card text-center">
                         <div><img src="{{ asset('assets/image/chat.png') }}" alt="Message Pic"></div>

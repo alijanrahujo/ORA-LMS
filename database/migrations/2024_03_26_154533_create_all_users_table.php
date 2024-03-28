@@ -11,21 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('institutes', function (Blueprint $table) {
+        Schema::create('all_users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('owner_name');
-            $table->string('cnic')->nullable();
-            $table->string('designation');
+            $table->string('religion');
+            $table->string('gender');
+            $table->string('dob');
             $table->string('address');
-            $table->string('city');
+            $table->string('joining_date');
             $table->string('phone');
-            $table->string('phone2')->nullable();
-            $table->string('sector');
-            $table->string('type');
-            $table->string('logo')->nullable();
+            $table->string('email');
+            $table->string('password');
+            $table->string('profile_picture');
+            $table->foreignId('role_id')->constrained('roles');
             $table->string('status')->default(0);
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('institute_id')->constrained('institutes');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('institutes');
+        Schema::dropIfExists('all_users');
     }
 };

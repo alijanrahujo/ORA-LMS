@@ -58,6 +58,8 @@ class TeacherController extends Controller
         $teacher->user_id = Auth::user()->id;
         $teacher->save();
 
+        
+
         return redirect('institute/teacher')->with('success', 'Institute Successfully Registered');
     }
 
