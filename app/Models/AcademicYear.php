@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AcademicYear extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'year',
         'year_title',
@@ -25,6 +26,4 @@ class AcademicYear extends Model
             $model->institute_id = Auth()->id();
         });
     }
-    protected $table = "academic_years";
-    public $timestamps = true;
 }

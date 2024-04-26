@@ -17,8 +17,8 @@ return new class extends Migration
             $table->date('date');
             $table->string('note');
             $table->foreignId('institute_id')->constrained('institutes');
-            $table->foreignId('academic_id')->constrained('academic_id,');
-            $table->foreignId('user_id')->constrained('user_id,');
+            $table->foreignId('academic_id')->constrained('academic_years');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
