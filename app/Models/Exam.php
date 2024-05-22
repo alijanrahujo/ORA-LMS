@@ -11,7 +11,7 @@ class Exam extends Model
         'exam_name',
         'date',
         'note',
-        'academic_id'
+        'academic_year_id'
     ];
     public static function boot()
     {
@@ -21,7 +21,7 @@ class Exam extends Model
 
             $model->user_id =Auth()->id();
             $model->institute_id = Auth()->id();
-            $model->academic_year_id = Auth()->user()->academic_id;
+            $model->academic_year_id = Auth()->user()->academic_year_id;
         });
     }
     protected $table = "exam";

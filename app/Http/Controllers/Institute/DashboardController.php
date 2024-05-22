@@ -13,7 +13,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $academic_id = Auth::user()->academic_id;
+        $academic_year_id = Auth::user()->academic_year_id;
         $student = Student::all();
         $academic_year = AcademicYear::pluck('year_title', 'id');
         //  return $academic_year;

@@ -18,7 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $academic_year_id = Auth::user()->academic_id;
+        $academic_year_id = Auth::user()->academic_year_id;
         $institute_id = auth()->user()->institute_id;
 
         $students = Student::where('academic_year_id', $academic_year_id)
@@ -68,7 +68,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
 
-        $academic_year_id = Auth::user()->academic_id;
+        $academic_year_id = Auth::user()->academic_year_id;
         // Instantiate a new Student object
         $student = new Student;
 

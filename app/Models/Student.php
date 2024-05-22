@@ -30,7 +30,7 @@ class Student extends Model
         'guardian_id',
         'class_id',
         'section_id',
-        'academic_id'
+        'academic_year_id'
     ];
     // public function Section()
     // {
@@ -47,7 +47,7 @@ class Student extends Model
         static::creating(function ($model) {
             $model->user_id = Auth()->id();
             $model->institute_id = Auth()->id();
-            $model->academic_year_id = Auth()->user()->academic_id;
+            $model->academic_year_id = Auth()->user()->academic_year_id;
         });
     }
     public function Section()

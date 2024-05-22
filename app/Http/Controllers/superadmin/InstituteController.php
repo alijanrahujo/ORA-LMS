@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Superadmin;
 
 use App\Models\User;
 use App\Models\Institute;
+use App\Models\AcademicYear;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -63,6 +64,26 @@ class InstituteController extends Controller
         $institute->user_id = $user->id;
         $institute->logo = $logo;
         $institute->save();
+
+        $academic = new AcademicYear();
+        // Get the current year
+        if(date('m') >7)
+        {
+            $currentYear = date('Y');
+            $preYear = $currentYear - 1;
+        }
+        else
+        {
+            $preYear = date('Y');
+            $currentYear = $preYear + 1;
+        }
+        // Set the academic year dynamically
+        $academic->year = "$preYear-$currentYear";
+        $academic->year_title = "$preYear-$currentYear";
+        // Set the starting and ending dates dynamically
+        $academic->starting_date = "$preYear-08-01";
+        $academic->ending_date = "$currentYear-07-31";
+        $academic->save();
 
         return redirect('superadmin/institute')->with('success','Institute Successfully Registered');
     }

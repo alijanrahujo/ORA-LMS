@@ -16,7 +16,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $academic_year_id = Auth::user()->academic_id;
+        $academic_year_id = Auth::user()->academic_year_id;
         $institute_id     = auth()->user()->institute_id;
         // return $academic_year_id;
         //$teachers = Teacher::where('academic_year_id', $academic_year_id)->with('Teacher')->get();
@@ -40,7 +40,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        $academic_year_id = Auth::user()->academic_id;
+        $academic_year_id = Auth::user()->academic_year_id;
         // return $request;
         $teacher = new Teacher;
         $teacher->name = $request->name;
@@ -58,7 +58,7 @@ class TeacherController extends Controller
         $teacher->user_id = Auth::user()->id;
         $teacher->save();
 
-        
+
 
         return redirect('institute/teacher')->with('success', 'Institute Successfully Registered');
     }

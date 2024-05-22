@@ -114,7 +114,7 @@
                         <div class=" card_inside p-3 " id="card1">
                             <div>
                                 @php
-                                    $academic_year_id = Auth::user()->academic_id;
+                                    $academic_year_id = Auth::user()->academic_year_id;
                                     $students = \App\Models\Student::where('academic_year_id', $academic_year_id)
                                         ->with('SchoolClass')
                                         ->get();
@@ -150,7 +150,7 @@
                         <div class=" card_inside p-3 " id="card3">
                             <div>
                                 @php
-                                    $academic_year_id = Auth::user()->academic_id;
+                                    $academic_year_id = Auth::user()->academic_year_id;
                                     $teachers = \App\Models\Teacher::where('academic_year_id', $academic_year_id)
                                         ->with('AcademicYear')
                                         ->get();

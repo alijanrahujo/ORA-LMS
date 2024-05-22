@@ -24,7 +24,7 @@ class Institute extends Model
         'sector',
         'type',
         'status',
-        'academic_id'
+        'academic_year_id'
     ];
 
     public function AcademicYear()

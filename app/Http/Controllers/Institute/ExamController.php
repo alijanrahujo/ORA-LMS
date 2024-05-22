@@ -14,7 +14,7 @@ class ExamController extends Controller
     public function index()
     {
         $institute_id = auth()->user()->institute_id;
-        $academic_year_id = Auth::user()->academic_id;
+        $academic_year_id = Auth::user()->academic_year_id;
         $exams = Exam::where('academic_year_id', $academic_year_id)
             ->where('institute_id', $institute_id)
             ->with('AcademicYear')
@@ -31,7 +31,7 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
-        $academic_year_id = Auth::user()->academic_id;
+        $academic_year_id = Auth::user()->academic_year_id;
         //return $request;
         $exam = new Exam;
         $exam->exam_name = $request->exam_name;

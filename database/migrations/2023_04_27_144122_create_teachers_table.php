@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('status')->default(1);
             $table->foreignId('institute_id')->constrained('institutes');
-            $table->foreignId('academic_id')->constrained('academic_years');
+            $table->foreignId('academic_year_id')->constrained('academic_years');
             $table->foreignId('user_id')->constrained('users');
             $table->softDeletes();
             $table->timestamps();

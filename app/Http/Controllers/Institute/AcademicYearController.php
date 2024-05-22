@@ -83,7 +83,7 @@ class AcademicYearController extends Controller
         // Get the authenticated user
         $user = User::find(Auth::user()->id);
         $user->update([
-            'academic_id' => $request->academic_id,
+            'academic_year_id' => $request->academic_year_id,
             'updated_at' => now()->toDateTimeString() // Format current datetime as string
         ]);
 

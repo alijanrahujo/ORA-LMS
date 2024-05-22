@@ -31,7 +31,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'academic_id'
+        'academic_year_id'
     ];
     public static function boot()
     {
@@ -45,7 +45,7 @@ class User extends Authenticatable
     }
     public function AcademicYear()
     {
-        return $this->hasOne(AcademicYear::class, 'id', 'academic_id');
+        return $this->hasOne(AcademicYear::class, 'id', 'academic_year_id');
     }
 
     /**

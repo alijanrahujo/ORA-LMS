@@ -127,20 +127,20 @@
                         <div class="dropdown-header noti-title" style="padding: 20px; border-bottom: 1px solid #ddd;">
                             <h5 class="text-overflow m-0 align-self-center"><span class="float-right">You have two
                                     years</span></h5>
-                            <form method="POST" action="{{ route('institute.academic_year_change') }}">
+                            <form method="POST" action="{{ Route('institute.academic_year_change') }}">
                                 @csrf
                                 <div class="container">
                                     <div class="row mt-4">
                                         @php
-                                            $academic_year_id = Auth::user()->academic_id;
+                                            $academic_year_id = Auth::user()->academic_year_id;
 
                                             $academic_year = App\Models\AcademicYear::pluck('year_title', 'id');
                                         @endphp
                                         <div class="form-group">
                                             <label for="year_title">Year Title <span
                                                     class="text-danger">*</span></label>
-                                            {!! Form::select('academic_id', $academic_year, $academic_year_id, [
-                                                'id' => 'academic_id', // Add id attribute
+                                            {!! Form::select('academic_year_id', $academic_year, $academic_year_id, [
+                                                'id' => 'academic_year_id', // Add id attribute
                                                 'class' => 'form-control', // Add class attribute
                                                 'data-toggle' => 'select2', // Add data-toggle attribute if needed
                                                 'placeholder' => 'Please select a year title', // Change placeholder text
@@ -327,7 +327,7 @@
                         </li>
 
                          <li>
-                            <a href="{{ route('institute.user.index') }}">
+                            <a href="{{ route('institute.users.index') }}">
                                 <i class="fe-airplay"></i>
                                 <span>Users</span>
                             </a>
